@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background-color: #222;
+}
+
+.box {
+  position: relative;
+
+  width: 300px;
+  height: 300px;
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  margin: 0 50px;
+}
+
+.loader {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 150px;
+  height: 150px;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+
+  animation: animate 24s linear infinite;
+}
+@keyframes animate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.loader span {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid #fff; */
+
+  transform: rotate(calc(30deg * var(--i)));
+}
+.loader span::before {
+  content: "";
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.loader span:nth-child(3n + 3)::before {
+  background-color: #fff;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff,
+    0 0 50px #fff;
+
+  animation: animateSquare 2s linear infinite;
+  transform-origin: 75px;
+}
+@keyframes animateSquare {
+  0%,
+  25% {
+    transform: rotate(0deg);
+  }
+  75%,
+  90%,
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 0.9em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.25);
+}
+h2 b {
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff,
+    0 0 50px #fff;
+}
+
+.box:nth-child(2) .loader {
+  animation-timing-function: steps(12);
+}
