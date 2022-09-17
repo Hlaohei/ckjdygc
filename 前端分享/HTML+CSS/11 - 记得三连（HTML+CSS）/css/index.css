@@ -1,0 +1,206 @@
+:root {
+  /* 自定义颜色变量 方便统一切换图标颜色 */
+  --color: #fb7299;
+  /* --color: #00aeec; */
+}
+* {
+  /* 初始化基础元素 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 上下左右居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 元素的距离 */
+  gap: 100px;
+  /* 临时改成竖着居中 */
+  /* flex-direction: column; */
+  /* 超出部分隐藏 */
+  overflow: hidden;
+
+  min-height: 100vh;
+}
+
+.box {
+  /* 内部元素上下左右居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 200px;
+  height: 200px;
+  /* 50% 的圆角就是 ○ */
+  border-radius: 50%;
+  /* 鼠标放上去是小手 */
+  cursor: pointer;
+
+  position: relative;
+}
+
+.box .icon {
+  width: 150px;
+  height: 150px;
+
+  /* svg 的填充颜色 */
+  fill: #ddd;
+  /* svg 的描边线宽 */
+  stroke-width: 1;
+  /* svg 的描边颜色 */
+  stroke: var(--color);
+  /* svg 的描边线框样式 */
+  stroke-dasharray: 100;
+  /* svg 的描边偏移量，也就是描边开始到结束的距离 */
+  stroke-dashoffset: 100;
+  /* svg 的描边两头的形状，是圆的 */
+  stroke-linecap: round;
+
+  z-index: 10;
+}
+
+.box span,
+.box span::before {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  /* 利用盒子阴影来实现小圆点绕着中心的效果 */
+  box-shadow: 0 -120px 0 var(--color), 0 120px 0 var(--color),
+    -120px 0 0 var(--color), 120px 0 0 var(--color);
+
+  /* 元素居中 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* scale(0) 是先把小圆点隐藏起来，下面动画再显示 */
+  transform: translate(-50%, -50%) scale(0);
+}
+.box span::before {
+  content: "";
+
+  /* 利用伪元素复制一份小圆点，rotate(45deg) 旋转 45° */
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+}
+
+.box input[type="checkbox"] {
+  /* 隐藏默认复选框样式 */
+  display: none;
+
+  position: absolute;
+}
+
+.box input[type="checkbox"]:checked ~ .icon path {
+  /* 给 svg 图标添加动画 */
+  animation: 1s animate-fill linear forwards;
+}
+@keyframes animate-fill {
+  /* 动画主要修改 svg 的描边偏移量和填充颜色，要掌握好动画的时间 */
+  0% {
+    stroke-dashoffset: 100;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    fill: #ddd;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: var(--color);
+  }
+}
+
+.box input[type="checkbox"]:checked ~ span {
+  /* 给图标周围的小圆点添加动画 */
+  animation: 0.5s animate-flash ease-in-out forwards 0.85s;
+}
+@keyframes animate-flash {
+  0% {
+    /* 通过 scale(0.5) 放大缩小控制圆点距离 */
+    transform: translate(-50%, -50%) scale(0.5);
+    /* 控制圆点的显示和隐藏 */
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.box input[type="checkbox"]:checked ~ span::before {
+  /* 同上一步一样，只不过伪元素需要单独添加旋转的 45° */
+  animation: 0.5s animate-flash-before ease-in-out forwards 0.85s;
+}
+@keyframes animate-flash-before {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.5);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* 下面是分别为三个图标添加不一样的动画，原理一样，掌握好动画时间即可 */
+.like input[type="checkbox"]:checked ~ .icon {
+  animation: 1s animate-like ease-in-out forwards 0.85s;
+}
+@keyframes animate-like {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30% {
+    transform: rotate(-30deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(-20deg);
+  }
+}
+
+.coin input[type="checkbox"]:checked ~ .icon {
+  animation: 1s animate-coin ease-in-out forwards;
+}
+@keyframes animate-coin {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(10px);
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+}
+
+.collect input[type="checkbox"]:checked ~ .icon {
+  animation: 1s animate-collect ease-in-out forwards;
+}
+@keyframes animate-collect {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.5);
+  }
+}
