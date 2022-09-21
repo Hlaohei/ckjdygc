@@ -1,0 +1,98 @@
+/* 日常初始化 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+}
+
+/* 按钮的颜色、大小、文字大小颜色 */
+.box button {
+  padding: 20px 50px;
+  background-color: rgb(240, 240, 240);
+  border: 4px solid rgba(0, 0, 0, 0.8);
+  font-size: 3em;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+  letter-spacing: 10px;
+  cursor: pointer;
+  /* 底部按钮大阴影 */
+  box-shadow: -100px 150px 100px rgba(0, 0, 0, 0.2);
+
+  position: relative;
+
+  /* 倾斜效果 */
+  transform: skew(30deg);
+  /* 过渡动画时间 */
+  transition: all 0.35s;
+}
+/* 按钮左边竖着的面 */
+.box button::before {
+  content: "";
+
+  width: 50px;
+  height: 100%;
+  /* 颜色和上面一致 */
+  background-color: rgb(240, 240, 240);
+  border: 4px solid rgba(0, 0, 0, 0.8);
+  /* 为了边框重叠更好看，去掉某一边框线 */
+  border-right: 0;
+
+  /* 定位根据实际位置调 */
+  position: absolute;
+  left: -58px;
+  top: 23px;
+
+  /* 倾斜到合适角度，看起来合适就行 */
+  transform: skewY(-45deg);
+  /* 过渡动画时间 */
+  transition: all 0.35s;
+}
+/* 按钮下边横着的面 */
+.box button::after {
+  content: "";
+
+  /* +4px 为了补齐去掉的边框长度 */
+  width: calc(100% + 4px);
+  height: 50px;
+  /* 颜色和上面一致 */
+  background-color: rgb(240, 240, 240);
+  border: 4px solid rgba(0, 0, 0, 0.8);
+  /* 去掉两边 */
+  border-left: 0;
+  border-top: 0;
+
+  /* 定位根据实际位置调 */
+  position: absolute;
+  left: -31px;
+  bottom: -58px;
+
+  /* 倾斜到合适角度，看起来合适就行 */
+  transform: skewX(-45deg);
+  /* 过渡动画时间 */
+  transition: all 0.35s;
+}
+
+.box button:hover,
+.box button:hover::before,
+.box button:hover::after {
+  /* 鼠标放上去修改按钮颜色和字体颜色 */
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.box button:active {
+  /* 鼠标点击时位置移动，模拟按下的效果 */
+  top: 20px;
+  left: -10px;
+
+  /* 按钮按下之后，阴影变小一点 */
+  box-shadow: -100px 120px 80px rgba(0, 0, 0, 0.2);
+}
