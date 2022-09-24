@@ -1,0 +1,88 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规元素居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  background-color: #eeeeee;
+}
+
+button {
+  /* 按钮宽高 */
+  width: 180px;
+  height: 60px;
+  /* 背景颜色 */
+  background-color: #262626;
+  /* 圆角 */
+  border-radius: 60px;
+  /* 字间距 */
+  letter-spacing: 6px;
+  /* 文字大小颜色 */
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.85);
+  /* 边框线，button 默认有边框 */
+  border: 4px solid #000000;
+  /* 内阴影 */
+  box-shadow: inset 0 0 30px #000000;
+  /* 鼠标小手 */
+  cursor: pointer;
+  /* 超出按钮的区域隐藏 */
+  overflow: hidden;
+
+  position: relative;
+}
+
+button::before {
+  content: "";
+
+  /* 按钮内部闪光块的宽高、颜色 */
+  width: 70%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  position: absolute;
+  top: 0;
+  left: -10px;
+
+  /* 倾斜闪光块 */
+  transform: skewX(-15deg);
+  /* 动画时间 */
+  transition: 0.5s;
+}
+button:hover:before {
+  /* 鼠标放上去之后改变位置，模拟闪光的动画 */
+  left: 200px;
+}
+
+/* 小一点的闪光块 */
+button::after {
+  content: "";
+
+  /* 按钮内部闪光块的宽高、颜色 */
+  width: 50px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  /* 定位靠后一点 */
+  position: absolute;
+  top: 0;
+  left: -70px;
+
+  /* 倾斜闪光块 */
+  transform: skewX(-15deg);
+  /* 动画时间 */
+  transition: 0.5s;
+  /* 延时动画，比上面大的闪光块晚一点出去 */
+  transition-delay: 0.2s;
+}
+button:hover:after {
+  /* 和上面一样，鼠标放上去改变位置，可以写在一起 */
+  left: 200px;
+}
