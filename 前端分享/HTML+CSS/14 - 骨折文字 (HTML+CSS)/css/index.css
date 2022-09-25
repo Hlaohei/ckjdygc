@@ -1,0 +1,83 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示、背景颜色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background-color: #111;
+}
+
+.box {
+  position: relative;
+
+  /* 文字整体倾斜一点 */
+  transform: skewY(15deg);
+  /* 动画时间 */
+  transition: 0.5s;
+}
+/* 鼠标放上去还原倾斜角度 */
+.box:hover {
+  transform: skewY(0);
+}
+
+.box span {
+  /* 字体盒子宽高 */
+  width: 800px;
+  height: 250px;
+  /* 字体颜色、大小、粗细、居中、行高 */
+  color: #fff;
+  font-size: 12em;
+  font-weight: bold;
+  text-align: center;
+  line-height: 250px;
+
+  /* 文字重叠、定位居中 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 动画时间 */
+  transition: 0.5s;
+}
+.box span:nth-child(1) {
+  /* 裁剪显示区域 */
+  /* 第一段文字显示区域 0% - 45% */
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+.box span:nth-child(2) {
+  /* 第二段文字显示区域 45% - 55% */
+  clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+
+  /* 中间折下去的颜色深一点 */
+  color: #eee;
+
+  /* 中间段倾斜，模拟折下去 */
+  transform: translate(-50%, -50%) skewX(-60deg);
+  /* 文字位置对齐，F12 里面微调 */
+  left: -21.5px;
+}
+.box span:nth-child(3) {
+  /* 第三段文字显示区域 55% - 100% */
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+
+  /* 文字位置对齐，F12 里面微调 */
+  left: -43px;
+}
+
+/* 鼠标放上去还原颜色、还原倾斜角度，还原位置偏移 */
+.box:hover span:nth-child(2),
+.box:hover span:nth-child(3) {
+  color: #fff;
+
+  transform: translate(-50%, -50%) skewX(0);
+  left: 0;
+}
