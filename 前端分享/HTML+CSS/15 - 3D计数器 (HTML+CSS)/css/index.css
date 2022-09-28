@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "阿里巴巴普惠体";
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background-color: #3f3f3f;
+}
+
+.box {
+  display: flex;
+  gap: 10px;
+
+  transform-style: preserve-3d;
+  transform: rotateY(30deg) rotateX(10deg);
+}
+
+.box .text {
+  width: 100px;
+  height: 100px;
+
+  position: relative;
+  transform-style: preserve-3d;
+
+  transition: 2.5s ease-in-out;
+  transition-delay: calc(0.25s * var(--i));
+}
+.box .text::before {
+  content: "";
+
+  width: 100%;
+  height: 100%;
+  background-color: #373737;
+
+  position: absolute;
+  transform-origin: left;
+  transform: rotateY(90deg) translateX(-50%);
+}
+.box .text:first-child:before {
+  background-color: #e95e87;
+}
+.box:hover .text {
+  transform: rotateX(-540deg);
+}
+.box:hover .text:first-child {
+  transform: rotateX(540deg);
+}
+
+.box .text span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#434343, #535353);
+  font-size: 4em;
+  font-weight: 500;
+  color: #fff;
+
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: rotateX(calc(90deg * var(--j))) translateZ(50px);
+}
+.box .text:first-child span {
+  background: linear-gradient(#e97089, #ed82ad);
+}
