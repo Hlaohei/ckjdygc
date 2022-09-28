@@ -1,10 +1,12 @@
 * {
+  /* 常规初始化 */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "阿里巴巴普惠体";
 }
 body {
+  /* 常规居中显示 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,23 +17,32 @@ body {
 }
 
 .box {
+  /* flex 让盒子横着排列 */
   display: flex;
+  /* 元素之间的距离 */
   gap: 10px;
 
+  /* 3D模式 */
   transform-style: preserve-3d;
+  /* 旋转一下，看着立体一点 */
   transform: rotateY(30deg) rotateX(10deg);
 }
 
 .box .text {
+  /* 单个元素的宽高 */
   width: 100px;
   height: 100px;
 
+  /* 给个定位 */
   position: relative;
+  /* 3D模式 */
   transform-style: preserve-3d;
-
+  /* 过度动画时间、动画曲线  */
   transition: 2.5s ease-in-out;
+  /* 动画延时，通过 calc 和 --i 计算出每个 text 元素对应的延时时间 */
   transition-delay: calc(0.25s * var(--i));
 }
+/* 方块左边空的一面 */
 .box .text::before {
   content: "";
 
@@ -40,35 +51,46 @@ body {
   background-color: #373737;
 
   position: absolute;
+  /* 下面的旋转位移都按左边为基础 */
   transform-origin: left;
+  /* 调整位置盖住左边面 */
   transform: rotateY(90deg) translateX(-50%);
 }
 .box .text:first-child:before {
+  /* 第一块给个不一样的颜色 */
   background-color: #e95e87;
 }
 .box:hover .text {
+  /* 鼠标放上去旋转一定角度 */
   transform: rotateX(-540deg);
 }
 .box:hover .text:first-child {
+  /* 第一块来个不同方向 */
   transform: rotateX(540deg);
 }
 
 .box .text span {
+  /* 内部元素居中对齐 */
   display: flex;
   justify-content: center;
   align-items: center;
 
   width: 100%;
   height: 100%;
+  /* 背景渐变颜色 */
   background: linear-gradient(#434343, #535353);
+  /* 字体大小、粗细、颜色 */
   font-size: 4em;
   font-weight: 500;
   color: #fff;
 
   position: absolute;
+  /* 3D模式 */
   transform-style: preserve-3d;
+  /* 旋转 90deg 的倍数，组成正方体四个面，调整到合适位置 */
   transform: rotateX(calc(90deg * var(--j))) translateZ(50px);
 }
 .box .text:first-child span {
+  /* 第一个颜色不一样 */
   background: linear-gradient(#e97089, #ed82ad);
 }
