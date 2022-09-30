@@ -1,0 +1,116 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 超出部分隐藏 */
+  overflow: hidden;
+
+  /* 简单背景色 */
+  background-color: rgb(255, 73, 73);
+}
+
+.box {
+  /* 父盒子宽高，用的 vw 单位，不同大小屏幕保持一致大小 */
+  width: 100vw;
+  height: 100vw;
+  /* background-color: #fff; */
+  /* border-radius: 50%; */
+
+  /* 父盒子居中定位 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.box span {
+  /* 超出部分隐藏 */
+  overflow: hidden;
+
+  /* 圆、背景色 */
+  border-radius: 50%;
+  background-color: rgb(255, 73, 73);
+
+  /* 所有 span 重叠居中 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 动画，使用 cubic-bezier 自定义动画曲线 */
+  animation: animate 10s cubic-bezier(0.65, -0.55, 0.35, 1.55) infinite;
+}
+@keyframes animate {
+  /* 动画旋转一圈 */
+  0%,
+  10% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  80%,
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+/* 每个 span 子盒子大小，通过百分比自动适应大小，动画延时时间，等一会再开始动画 */
+.box span:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  animation-delay: 0s;
+}
+.box span:nth-child(2) {
+  width: 80%;
+  height: 80%;
+  animation-delay: 0.2s;
+}
+.box span:nth-child(3) {
+  width: 60%;
+  height: 60%;
+  animation-delay: 0.4s;
+}
+.box span:nth-child(4) {
+  width: 40%;
+  height: 40%;
+  animation-delay: 0.6s;
+}
+.box span:nth-child(5) {
+  width: 20%;
+  height: 20%;
+  animation-delay: 0.8s;
+}
+
+.box span::before {
+  /* 通过 attr 添加文字到 span 中间 */
+  content: attr(data-text);
+
+  /* 宽度要保持最大的宽度 */
+  width: 100vw;
+  /* 字体的颜色、大小、粗细、居中 */
+  color: #fff;
+  font-size: 25vw;
+  font-weight: 900;
+  text-align: center;
+
+  /* 居中重叠定位 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.box span::after {
+  content: "";
+
+  /* 每个 span 内部阴影的宽高 */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* 内阴影 */
+  box-shadow: inset 0 0 1vw rgba(0, 0, 0, 0.2), inset 0 0 2vw rgba(0, 0, 0, 0.2),
+    inset 0 0 3vw rgba(0, 0, 0, 0.2), inset 0 0 4vw rgba(0, 0, 0, 0.2);
+
+  /* 重叠居中的定位 */
+  position: absolute;
+}
