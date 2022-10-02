@@ -1,0 +1,84 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 解决手机浏览器点击有选框的问题 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  /* 常规居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  /* 简单背景色 */
+  background-color: #c6c6ff;
+}
+
+button {
+  /* 把按钮撑大 */
+  padding: 4vw 8vw;
+  /* 去除默认边框 */
+  border: none;
+  /* 圆角 */
+  border-radius: 50vw;
+  /* 按钮背景色 */
+  background-color: #8888ff;
+  /* 字体颜色、大小、粗细、字间距 */
+  color: #fff;
+  font-size: 5vw;
+  font-weight: bold;
+  letter-spacing: 1vw;
+  /* 鼠标小手 */
+  cursor: pointer;
+
+  /* 给个定位 */
+  position: relative;
+  /* 3D模式 */
+  transform-style: preserve-3d;
+  /* 过度动画时间 */
+  transition: ease-in-out 2s;
+}
+button:hover {
+  /* 鼠标放上来旋转一圈 */
+  transform: rotateX(360deg);
+}
+
+button::before,
+button::after {
+  content: "";
+
+  /* 白色边框线 */
+  border: 0.8vw solid #fff;
+  /* 圆角 */
+  border-radius: 50vw;
+
+  /* 通过定位来撑开边框，简单来说，确定4边的距离，中间自然就固定了 */
+  position: absolute;
+  top: 1vw;
+  left: 1vw;
+  right: 1vw;
+  bottom: 1vw;
+
+  /* 3D模式 */
+  transform-style: preserve-3d;
+  /* 设置透视参数，向 Z轴方向移动，正常时候就是向屏幕外面移动 */
+  transform: perspective(1000vw) translateZ(5vw);
+}
+button::after {
+  /* 另一边反着移动一下 */
+  transform: perspective(1000vw) translateZ(-5vw);
+}
+
+button span {
+  /* 设置 span 为块元素 */
+  display: block;
+
+  /* 3D模式 */
+  transform-style: preserve-3d;
+  /* 同样设置透视，抬高 Z轴距离 */
+  transform: perspective(500vw) translateZ(8vw);
+}
