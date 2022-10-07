@@ -1,0 +1,85 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  /* 要做新拟态风格的话尽量颜色一致 */
+  background-color: #eaeaf0;
+}
+
+.loader {
+  display: flex;
+}
+
+.loader span {
+  /* 外圆的宽高、背景颜色 */
+  width: 250px;
+  height: 250px;
+  background-color: #eaeaf0;
+  /* ○ */
+  border-radius: 50%;
+  /* 边框 */
+  border: 6px solid #eaeaf0;
+  /* 阴影，和上一期一样的新拟态风格 */
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, 1),
+    8px 8px 25px rgba(0, 0, 0, 0.15);
+  /* 超出部分隐藏掉 */
+  overflow: hidden;
+
+  position: relative;
+}
+.loader span::before {
+  content: "";
+
+  /* 宽高是往内撑开，和上面一样背景颜色、○、边框线、阴影 */
+  inset: 40px;
+  background-color: #eaeaf0;
+  border-radius: 50%;
+  border: 6px solid #eaeaf0;
+  box-shadow: -8px -8px 25px rgba(255, 255, 255, 1),
+    8px 8px 25px rgba(0, 0, 0, 0.25), inset 3px 3px 10px rgba(0, 0, 0, 0.1),
+    inset -1px -1px 15px rgba(255, 255, 255, 1);
+
+  /* 临时加入 logo 背景图片 */
+  background: no-repeat url("../image/logo.svg");
+  background-size: contain;
+
+  /* 定位让它自己居中叠起来 */
+  position: absolute;
+  /* 显示层级高一点 */
+  z-index: 10;
+}
+
+.loader span i {
+  /* 往内撑开 0，也就是宽高 100% */
+  inset: 0;
+  /* 线性渐变颜色 */
+  background: linear-gradient(#69bbff, #ff6699, #ffee50);
+  /* 同样是个 ○ */
+  border-radius: 50%;
+  /* 给一点点模糊，让颜色温和一些 */
+  filter: blur(10px);
+
+  /* 定位叠起来 */
+  position: absolute;
+
+  /* 动画 */
+  animation: animate 2s linear infinite;
+}
+@keyframes animate {
+  /* 简单对渐变色的元素进行旋转 */
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
