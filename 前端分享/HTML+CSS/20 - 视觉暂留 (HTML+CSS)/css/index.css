@@ -1,0 +1,95 @@
+* {
+  /* 常规格式化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  /* 简单背景色 */
+  background-color: rgb(255, 200, 200);
+}
+
+.box {
+  /* 3D透视的距离 */
+  perspective: 1500px;
+}
+
+.box .bottom,
+.box .top {
+  /* 上下两层一样的边框、圆角 */
+  border: 0.5vmin solid #000;
+  border-radius: 2vmin;
+
+  /* 3D模式 */
+  transform-style: preserve-3d;
+}
+
+.box .bottom {
+  /* 下面蓝色盒子的宽高，vmin单位是会自动切换 vh 或 vw */
+  width: 60vmin;
+  height: 25vmin;
+  /* 背景竖条纹，通过渐变色来实现，一格透明，一格颜色 */
+  background: linear-gradient(90deg, transparent 1vmin, rgb(90, 90, 255) 1vmin);
+  /* 背景调整到合适大小 */
+  background-size: 2vmin;
+
+  position: relative;
+  /* 左右旋转动画 */
+  animation: animate 10s linear infinite;
+}
+@keyframes animate {
+  0%,
+  50%,
+  100% {
+    /* 控制好时间进行旋转就好 */
+    transform: rotateY(0deg);
+  }
+  25% {
+    transform: rotateY(-30deg);
+  }
+  75% {
+    transform: rotateY(30deg);
+  }
+}
+
+.box .top {
+  /* 上面红色盒子宽高，与蓝色一致 */
+  width: 100%;
+  height: 100%;
+  /* 同样通过渐变色实现背景条纹 */
+  background: linear-gradient(90deg, transparent 1vmin, rgb(255, 33, 77) 1vmin);
+  background-size: 2vmin;
+
+  /* 定位重叠在一起，一样大，所以不用移动位置 */
+  position: absolute;
+  /* 3D模式后，面向屏幕抬升一定距离，在旋转时才是错层的效果 */
+  transform: translateZ(20vmin);
+}
+
+.box .top::before {
+  /* 临时文字层，只是用来放视频标题🐷 */
+  content: "视觉暂留";
+
+  /* 宽保持最大，不然字会挤 */
+  width: 100%;
+  /* 字体大小、粗细、字体居中、颜色 */
+  font-size: 12vmin;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+
+  /* 居中重叠显示 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* 同样3D模式之后抬升一部分距离 */
+  transform-style: preserve-3d;
+  transform: translate3d(-50%, -50%, 10vmin);
+}
