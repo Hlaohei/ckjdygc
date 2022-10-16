@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <title>21 - 粘黏牛奶 (HTML+CSS)</title>
+
+  <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body>
+
+  <div class="box">
+    <h2>粘黏牛奶</h2>
+
+    <div class="loader">
+      <span style="--i:0"></span>
+      <span style="--i:1"></span>
+      <span style="--i:2"></span>
+      <span style="--i:3"></span>
+      <span style="--i:4"></span>
+      <span style="--i:5"></span>
+      <span style="--i:6"></span>
+      <span style="--i:7"></span>
+    </div>
+  </div>
+
+  <svg width="0" height="0">
+    <!-- 滤镜 -->
+    <filter id="Gooey">
+      <!-- 高斯模糊滤镜 stdDeviation偏差值 -->
+      <feGaussianBlur stdDeviation="10" />
+
+      <!-- 颜色矩阵 -->
+      <feColorMatrix values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0 
+        0 0 0 20 -10
+      " />
+    </filter>
+  </svg>
+
+</body>
+
+</html>
