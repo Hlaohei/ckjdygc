@@ -1,0 +1,133 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示、简单背景颜色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background-color: #d6dce6;
+}
+
+.box {
+  /* 父盒子宽高 */
+  width: 50vmin;
+  height: 20vmin;
+
+  position: relative;
+}
+
+.box label {
+  /* 按钮背景盒子宽高撑满 */
+  width: 100%;
+  height: 100%;
+  /* 背景渐变色，简单来个新拟态效果意思意思 */
+  background: linear-gradient(#bdc8da, #eaedf2);
+  /* 圆角，值超过一定量之后都无所谓了 */
+  border-radius: 20vmin;
+  /* 左上角和右下角阴影 */
+  box-shadow: -1vmin -1vmin 4vmin rgba(255, 255, 255, 0.4),
+    1vmin 1vmin 5vmin rgba(0, 0, 0, 0.1);
+  /* 鼠标小手 */
+  cursor: pointer;
+
+  /* 定位叠在中间 */
+  position: absolute;
+}
+.box label::before {
+  content: "";
+
+  /* 中间滑块宽高 */
+  width: 70%;
+  height: 25%;
+  /* 默认红色 */
+  background-color: #dd4d66;
+  /* 圆角 */
+  border-radius: 10vmin;
+  /* 内部一个阴影，像凹进去一样 */
+  box-shadow: inset 0 0.5vmin 4vmin rgba(0, 0, 0, 0.6);
+
+  /* 定位居中显示，应为有个滑块的效果，所以左右的定位手动给 */
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+/* 其实可以简化代码，把一样的内容上下写一遍就行，这里重复写一下好看一点 */
+.box label::after {
+  content: "";
+
+  /* 默认宽度为 0，当复选框选中之后，再慢慢变宽 */
+  width: 0;
+  height: 25%;
+  /* 选中状态为绿色 */
+  background-color: #39d339;
+  /* 同样的圆角、阴影 */
+  border-radius: 10vmin;
+  box-shadow: inset 0 0.5vmin 4vmin rgba(0, 0, 0, 0.6);
+
+  /* 同样的定位 */
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  /* 显示层级要盖过红色 */
+  z-index: 20;
+
+  /* 过渡动画时间 */
+  transition: 0.5s;
+}
+.box input[type="checkbox"]:checked + label::after {
+  /* 选中之后宽度改成正常显示 */
+  width: 70%;
+}
+
+.box input[type="checkbox"] {
+  /* 隐藏原始的复选框，下面自定义成中间滑块的圆 */
+  appearance: none;
+
+  /* 圆滑块宽高 */
+  width: 15vmin;
+  height: 15vmin;
+  /* 渐变背景、○ */
+  background: linear-gradient(#e9ebeb, #bdc7d6);
+  border-radius: 50%;
+  /* 鼠标小手 */
+  cursor: pointer;
+
+  /* 定位居中显示 */
+  position: absolute;
+  top: 50%;
+  /* 偏左的位置 */
+  left: 20%;
+  transform: translate(-50%, -50%);
+  /* 显示层级最高 */
+  z-index: 666;
+
+  /* 过渡动画时间 */
+  transition: 0.5s;
+}
+.box input[type="checkbox"]::after {
+  content: "";
+
+  /* 向内挤出一个盒子 */
+  inset: 20%;
+  /* 渐变色换个方向 */
+  background: linear-gradient(360deg, #e9ebeb, #bdc7d6);
+  /* ○ */
+  border-radius: 50%;
+
+  /* 定位叠中间 */
+  position: absolute;
+}
+.box input[type="checkbox"]:checked {
+  /* 选中之后调整位置往右移动 */
+  left: 80%;
+}
