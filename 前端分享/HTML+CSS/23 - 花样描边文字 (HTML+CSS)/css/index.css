@@ -1,0 +1,49 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "阿里巴巴普惠体";
+}
+body {
+  /* 常规居中显示，简单背景色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background: linear-gradient(#111, #222);
+}
+
+.box {
+  /* 父盒子控制整体大小 */
+  width: 70vmin;
+}
+
+.box .text {
+  /* 填充色 */
+  fill: none;
+  /* 描边颜色，标签上定义的颜色变量 */
+  stroke: var(--color);
+  /* 描边宽度 */
+  stroke-width: 0.5px;
+  /* 控制描边是虚线 */
+  stroke-dasharray: 10% 20%;
+  /* 描边的路径距离，控制描边顺着边跑 */
+  stroke-dashoffset: 0%;
+
+  /* 描边动画 */
+  animation: animate 6s linear infinite;
+  /* 动画延时，用标签定义的 --i 变量 */
+  animation-delay: calc(var(--i) * -1s);
+}
+@keyframes animate {
+  0% {
+    stroke-dashoffset: 0%;
+  }
+  100% {
+    /* 控制好描边动起来的时间和距离 */
+    stroke-dashoffset: -30%;
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <title>23 - 花样描边文字 (HTML+CSS)</title>
+
+  <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body>
+
+  <div class="box">
+    <svg viewBox="0 0 100 50">
+      <text id="text" x="50%" y="50%" text-anchor="middle" fill="none">花样描边文字</text>
+
+      <use xlink:href="#text" class="text" style="--i:0;--color:#6633bb;"></use>
+      <use xlink:href="#text" class="text" style="--i:1;--color:#dd2266;"></use>
+      <use xlink:href="#text" class="text" style="--i:3;--color:#ff5522;"></use>
+      <use xlink:href="#text" class="text" style="--i:2;--color:#ee3322;"></use>
+      <use xlink:href="#text" class="text" style="--i:4;--color:#eebb11;"></use>
+    </svg>
+  </div>
+
+</body>
+
+</html>
