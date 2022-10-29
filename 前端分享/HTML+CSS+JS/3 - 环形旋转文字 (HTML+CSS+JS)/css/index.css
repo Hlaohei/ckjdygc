@@ -1,0 +1,81 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示、简单背景颜色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background-color: #eee;
+}
+
+.box {
+  /* 父盒子内的 logo和文字 都居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 父盒子宽高 */
+  width: 60vmin;
+  height: 60vmin;
+  /* 测试查看大小情况 */
+  background-color: #ccc;
+  /* ○ 父盒子无所谓 */
+  border-radius: 50%;
+
+  position: relative;
+}
+
+.box .logo {
+  /* 中间 logo 宽高 */
+  width: 70%;
+  height: 70%;
+  /* 引入背景图片 */
+  background: url(../image/logo.svg);
+  /* 把图片大小调合适 */
+  background-size: 100% 100%;
+  /* ○ */
+  border-radius: 50%;
+
+  /* 定位居中，叠起来 */
+  position: absolute;
+}
+
+.box .text {
+  /* 文字区域大小 */
+  width: 100%;
+  height: 100%;
+
+  /* 同样定位叠起来 */
+  position: absolute;
+
+  /* 旋转动画 */
+  animation: animate 20s linear infinite;
+}
+@keyframes animate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    /* 就是绕圈旋转 */
+    transform: rotate(-360deg);
+  }
+}
+
+.box .text span {
+  /* 字体大小 */
+  font-size: 4vmin;
+
+  /* span 元素的旋转基点，在整个父元素中间 */
+  transform-origin: 0 30vmin;
+
+  /* 整体定位在中间 */
+  position: absolute;
+  left: 50%;
+}
