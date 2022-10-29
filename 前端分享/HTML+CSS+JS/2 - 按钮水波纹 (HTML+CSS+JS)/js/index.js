@@ -8,6 +8,9 @@ buttons.forEach((button) => {
     /**
      * e.clientX 鼠标事件触发时，指针相对于浏览器边缘的 水平坐标
      * e.clientY 鼠标事件触发时，指针相对于浏览器边缘的 垂直坐标
+     * e.pageX 相对于文档的坐标
+     * e.clientX 相对于屏幕页面的坐标
+     * NOTE: 注意两者区别
      *
      * e.target.offsetLeft 被点击的元素左边相对于浏览器左边的距离坐标
      * e.target.offsetTop 被点击的元素上边相对于浏览器上边的距离坐标
@@ -16,8 +19,8 @@ buttons.forEach((button) => {
      * x = 鼠标位置距离浏览器左边缘的坐标 - 元素距离浏览器左边缘的坐标
      * y 同理，距离上边
      */
-    let x = e.clientX - e.target.offsetLeft;
-    let y = e.clientY - e.target.offsetTop;
+    let x = e.pageX - e.target.offsetLeft;
+    let y = e.pageY - e.target.offsetTop;
 
     // console.log("🚀 ~ left, top", x, y);
 
