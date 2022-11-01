@@ -10,60 +10,8 @@
 
   <link rel="shortcut icon" href="logo-small.png" type="image/x-icon">
 
-  <Style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 10vmin;
-      overflow: hidden;
-
-      min-height: 100vh;
-      padding: 0 20px;
-      background-image: linear-gradient(to top, #ff9a9e, #fecfef);
-    }
-
-    h1 {
-      color: #fff;
-      font-size: 38px;
-      text-align: center;
-    }
-
-    .list-box {
-      display: flex;
-      gap: 20px;
-      height: 70vh;
-      margin: 0 auto;
-    }
-
-    .left-box,
-    .right-box {
-      overflow: auto;
-      width: 400px;
-      height: 80%;
-      background-color: rgba(31, 31, 31, 0.2);
-      backdrop-filter: blur(16px);
-      padding: 20px;
-      border-radius: 20px;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    ul li a {
-      display: block;
-      padding: 6px;
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.9);
-      text-align: left;
-    }
-  </Style>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/index.css">
 
 </head>
 
@@ -73,43 +21,43 @@
 
   <div class="list-box">
     <div class="left-box">
-      <h2>HTML+CSS 页面效果案例</h2>
+      <h2>HTML+CSS</h2>
 
       <ul>
-        <li><a href="./前端分享/HTML+CSS/1-肥皂泡泡(HTML+CSS)/index.html">1 - 肥皂泡泡（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/2-简单下雨动画(HTML+CSS)/index.html">2 - 简单下雨动画（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/3-旋转方块动画(HTML+CSS)/index.html">3 - 旋转方块动画（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/4-渐变光条(HTML+CSS)/index.html">4 - 渐变光条（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/5-来个月饼(HTML+CSS)/index.html">5 - 来个月饼（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/6-大红灯笼(HTML+CSS)/index.html">6 - 大红灯笼（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/7-急速出租(HTML+CSS)/index.html">7 - 急速出租（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/8-发光方块(HTML+CSS)/index.html">8 - 发光方块（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/9-3D旋转文字(HTML+CSS)/index.html">9 - 3D旋转文字（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/10-翻盖开关(HTML+CSS)/index.html">10 - 翻盖开关（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/11-记得三连(HTML+CSS)/index.html">11 - 记得三连（HTML+CSS）</a></li>
-        <li><a href="./前端分享/HTML+CSS/12-这是个按钮(HTML+CSS)/index.html">12 - 这是个按钮 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/13-闪光按钮(HTML+CSS)/index.html">13 - 闪光按钮 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/14-骨折文字(HTML+CSS)/index.html">14 - 骨折文字 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/15-3D计数器(HTML+CSS)/index.html">15 - 3D计数器 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/16-国庆快乐(HTML+CSS)/index.html">16 - 国庆快乐 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/17-3D翻转按钮(HTML+CSS)/index.html">17 - 3D翻转按钮 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/18-新拟态加载(HTML+CSS)/index.html">18 - 新拟态加载 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/19-圆形渐变加载(HTML+CSS)/index.html">19 - 圆形渐变加载 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/20-视觉暂留(HTML+CSS)/index.html">20 - 视觉暂留 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/21-粘黏牛奶(HTML+CSS)/index.html">21 - 粘黏牛奶 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/22-拟态开关(HTML+CSS)/index.html">22 - 拟态开关 (HTML+CSS)</a></li>
-        <li><a href="./前端分享/HTML+CSS/23-花样描边文字(HTML+CSS)/index.html">23 - 花样描边文字 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/1-肥皂泡泡(HTML+CSS)">1 - 肥皂泡泡（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/2-简单下雨动画(HTML+CSS)">2 - 简单下雨动画（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/3-旋转方块动画(HTML+CSS)">3 - 旋转方块动画（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/4-渐变光条(HTML+CSS)">4 - 渐变光条（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/5-来个月饼(HTML+CSS)">5 - 来个月饼（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/6-大红灯笼(HTML+CSS)">6 - 大红灯笼（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/7-急速出租(HTML+CSS)">7 - 急速出租（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/8-发光方块(HTML+CSS)">8 - 发光方块（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/9-3D旋转文字(HTML+CSS)">9 - 3D旋转文字（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/10-翻盖开关(HTML+CSS)">10 - 翻盖开关（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/11-记得三连(HTML+CSS)">11 - 记得三连（HTML+CSS）</a></li>
+        <li><a href="./前端分享/HTML+CSS/12-这是个按钮(HTML+CSS)">12 - 这是个按钮 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/13-闪光按钮(HTML+CSS)">13 - 闪光按钮 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/14-骨折文字(HTML+CSS)">14 - 骨折文字 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/15-3D计数器(HTML+CSS)">15 - 3D计数器 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/16-国庆快乐(HTML+CSS)">16 - 国庆快乐 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/17-3D翻转按钮(HTML+CSS)">17 - 3D翻转按钮 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/18-新拟态加载(HTML+CSS)">18 - 新拟态加载 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/19-圆形渐变加载(HTML+CSS)">19 - 圆形渐变加载 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/20-视觉暂留(HTML+CSS)">20 - 视觉暂留 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/21-粘黏牛奶(HTML+CSS)">21 - 粘黏牛奶 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/22-拟态开关(HTML+CSS)">22 - 拟态开关 (HTML+CSS)</a></li>
+        <li><a href="./前端分享/HTML+CSS/23-花样描边文字(HTML+CSS)">23 - 花样描边文字 (HTML+CSS)</a></li>
       </ul>
     </div>
 
     <div class="right-box">
-      <h2>HTML+CSS+JS 页面效果案例</h2>
+      <h2>HTML+CSS+JS</h2>
 
       <ul>
-        <li><a href="./前端分享/HTML+CSS+JS/1-盯着你(HTML+CSS+JS)/index.html">1 - 盯着你 (HTML+CSS+JS)</a></li>
-        <li><a href="./前端分享/HTML+CSS+JS/2-按钮水波纹(HTML+CSS+JS)/index.html">2 - 按钮水波纹 (HTML+CSS+JS)</a></li>
-        <li><a href="./前端分享/HTML+CSS+JS/3-环形旋转文字(HTML+CSS+JS)/index.html">3 - 环形旋转文字 (HTML+CSS+JS)</a></li>
-        <li><a href="./前端分享/HTML+CSS+JS/4-瞄准目标(HTML+CSS+JS)/index.html">4 - 瞄准目标 (HTML+CSS+JS)</a></li>
+        <li><a href="./前端分享/HTML+CSS+JS/1-盯着你(HTML+CSS+JS)">1 - 盯着你 (HTML+CSS+JS)</a></li>
+        <li><a href="./前端分享/HTML+CSS+JS/2-按钮水波纹(HTML+CSS+JS)">2 - 按钮水波纹 (HTML+CSS+JS)</a></li>
+        <li><a href="./前端分享/HTML+CSS+JS/3-环形旋转文字(HTML+CSS+JS)">3 - 环形旋转文字 (HTML+CSS+JS)</a></li>
+        <li><a href="./前端分享/HTML+CSS+JS/4-瞄准目标(HTML+CSS+JS)">4 - 瞄准目标 (HTML+CSS+JS)</a></li>
       </ul>
     </div>
   </div>
