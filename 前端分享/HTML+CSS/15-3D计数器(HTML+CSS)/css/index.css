@@ -4,6 +4,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "阿里巴巴普惠体";
+  /* 解决手机浏览器点击有选框的问题 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
   /* 常规居中显示 */

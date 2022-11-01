@@ -3,6 +3,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* 解决手机浏览器点击有选框的问题 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
   /* 常规居中显示 */
@@ -29,9 +31,7 @@ body {
   background-color: #fff;
   border-radius: 50%;
   /* 内外阴影 */
-  box-shadow: 
-    0 0 4vmin rgba(0, 0, 0, 0.2), 
-    inset 0 0 2vmin #33bbff,
+  box-shadow: 0 0 4vmin rgba(0, 0, 0, 0.2), inset 0 0 2vmin #33bbff,
     inset 0 0 4vmin #33bbff;
 
   position: relative;
