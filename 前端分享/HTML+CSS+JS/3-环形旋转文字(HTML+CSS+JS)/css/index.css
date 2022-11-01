@@ -25,7 +25,7 @@ body {
   width: 60vmin;
   height: 60vmin;
   /* 测试查看大小情况 */
-  background-color: #ccc;
+  /* background-color: #ccc; */
   /* ○ 父盒子无所谓 */
   border-radius: 50%;
 
