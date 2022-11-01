@@ -1,0 +1,27 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background: linear-gradient(45deg, #fad0c4, #ffd1ff);
+
+  /* 修改鼠标样式，改成心形图片，后面要加一个默认样式，不然不起作用 */
+  cursor: url("../image/heart.png"), auto;
+}
+
+.archer {
+  /* 简单给个宽，最后用 js 随机生成 */
+  width: 20vmin;
+
+  /* 简单给个定位，具体值用 js 随机生成 */
+  position: absolute;
+}
