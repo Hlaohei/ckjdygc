@@ -1,0 +1,120 @@
+*,
+*::before,
+*::after {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示，简单背景颜色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background-color: #101010;
+  /* background-color: pink; */
+}
+
+.box {
+  /* 父盒子内部所有元素居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 父盒子确定宽高、○ */
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50%;
+
+  position: relative;
+
+  /* 旋转动画 */
+  animation: animate 5s linear infinite;
+}
+.box:hover {
+  /* 鼠标放上去，暂停动画 */
+  animation-play-state: paused;
+}
+@keyframes animate {
+  100% {
+    /* 动画就是简单让父盒子一直转圈 */
+    transform: rotate(360deg);
+  }
+}
+
+.box::before,
+.box::after {
+  content: "";
+
+  /* 基础圆宽高，组成亮暗对比 */
+  width: 70%;
+  height: 70%;
+  /* 边框线当圆，默认透明 */
+  border: 3vmin solid transparent;
+  /* ○ */
+  border-radius: 50%;
+  /* 内外两个阴影，同样为了层次感 */
+  box-shadow: 0 2vmin 1vmin #000, inset 0 0 1vmin #000;
+  /* 左边和下边的边框改成白色，等会和下面剩下的圆放在一块 */
+  border-left-color: #fff;
+  border-bottom-color: #fff;
+  /* 把两个圆旋转到一半一半的角度 */
+  transform: rotate(-45deg);
+
+  /* 定位叠起来 */
+  position: absolute;
+  /* 全部靠左 */
+  left: 0;
+  /* 显示层级高一点 */
+  z-index: 1;
+}
+.box::after {
+  /* 第二个基础圆大一圈，其他同上 */
+  width: 85%;
+  height: 85%;
+  /* 显示层级比上面低一层 */
+  z-index: 0;
+}
+
+.circle {
+  /* 以中间最小圆为基础大小 */
+  --inner: 70%;
+
+  /* 圆圈宽高 */
+  width: var(--inner);
+  height: var(--inner);
+  /* 边框和上面一样，要叠起来才有层次感，颜色一致才能融合成一个完整的圆 */
+  border: 3vmin solid #fff;
+  border-radius: 50%;
+  /* 每个圆自己都有内外两个大阴影 */
+  box-shadow: 1vmin 1vmin 1vmin #000, inset 1vmin 1vmin 1vmin #000;
+
+  /* 同样定位靠左 */
+  position: absolute;
+  left: 0;
+}
+.circle:nth-child(2) {
+  /* 大一圈的圆，其他同上不变 */
+  --inner: 85%;
+}
+.circle:nth-child(3) {
+  /* 再大一圈 */
+  --inner: 100%;
+}
+.circle:nth-child(4) {
+  --inner: 85%;
+  /* 这一层就不要阴影了 */
+  box-shadow: none;
+
+  /* 解决中间这个圆的样式，就是再盖一个，但只显示一半 */
+  /* clip-path 可以裁切显示区域，切掉上面一半，只显示下半边 */
+  /* clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%); */
+
+  /* 同样可以使用边框颜色的方式只显示一半，二选一 */
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg);
+}
