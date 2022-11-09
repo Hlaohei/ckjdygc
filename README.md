@@ -1,3 +1,4 @@
+![logo](logo-small.png)
 # ckjdygc - 创客界的一根葱
 
 ## 视频内容的代码分享等
