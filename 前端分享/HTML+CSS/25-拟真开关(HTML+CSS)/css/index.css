@@ -1,0 +1,234 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 解决手机浏览器点击有选框的问题 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  /* 常规居中显示、简单背景颜色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background: radial-gradient(transparent, #c5d5d5);
+}
+
+.switch {
+  /* 开关整体的宽高 */
+  width: 25vmin;
+  height: 30vmin;
+  /* 背景颜色默认黑色 */
+  background-color: #000;
+  /* 一点圆角 */
+  border-radius: 1vmin;
+  /* 内边距 */
+  padding: 2.8vmin;
+  /* 开关的阴影，同时也是开关的几层边框 */
+  box-shadow: 0 0 2vmin 1vmin rgba(0, 0, 0, 0.2), 0 0 0.1vmin 0.3vmin #000,
+    inset 0 0.2vmin 0.2vmin -0.2vmin #fff, inset 0 0 0.2vmin 2vmin #444,
+    inset 0 0 0.2vmin 2.5vmin #000;
+
+  /* 透视距离 */
+  perspective: 70vmin;
+}
+
+.switch input {
+  /* 隐藏默认的复选框 */
+  display: none;
+}
+
+.switch .button {
+  /* 中间按钮宽高、背景颜色 */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    #980000 0%,
+    #6f0000 30%,
+    #6f0000 70%,
+    #980000 100%
+  );
+  /* 鼠标小手 */
+  cursor: pointer;
+
+  /* 3D模式 */
+  transform-style: preserve-3d;
+  /* 旋转的基点，在中间 */
+  transform-origin: center center -3vmin;
+  /* 抬高一点，然后旋转到开关关闭的位置 */
+  transform: translateZ(3vmin) rotateX(-25deg);
+  /* 过渡动画 */
+  transition: all 0.3s cubic-bezier(1, 0, 1, 1);
+
+  position: relative;
+}
+.switch .button::before {
+  content: "";
+  /* 上边面的宽高 */
+  width: 100%;
+  height: 6vmin;
+  /* 基础背景色 */
+  background-color: #b10000;
+  /* 有亮暗区别的渐变色 */
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.8) 10%,
+    rgba(255, 255, 255, 0.3) 30%,
+    #650000 75%,
+    #320000 100%
+  );
+  /* 背景大小，小一圈相当于就有边框了 */
+  background-size: 97% 97%;
+  /* 背景居中显示，并且不重复 */
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+
+  /* 旋转基点为上边 */
+  transform-origin: top;
+  /* 旋转 90° 正好成为上边的面 */
+  transform: rotateX(-90deg);
+
+  /* 定位在顶部 */
+  position: absolute;
+  top: 0;
+}
+.switch .button::after {
+  content: "";
+  /* 下边面的宽高，和上边一致 */
+  width: 100%;
+  height: 6vmin;
+  /* 比较暗的背景颜色 */
+  background-image: linear-gradient(#650000, #320000);
+  /* 开关打开时下半部分的阴影 */
+  box-shadow: 0 5vmin 1vmin 0 #000, 0 8vmin 2vmin 0 rgba(0, 0, 0, 0.5);
+
+  /* 旋转基点 */
+  transform-origin: top;
+  /* 先向下移动一个身位，然后进行旋转，成为下边面 */
+  transform: translateY(6vmin) rotateX(-90deg);
+
+  /* 定位在底部 */
+  position: absolute;
+  bottom: 0;
+}
+
+.switch .light {
+  /* 中间闪烁灯光的宽高，直接撑满开关按钮，下面其他都是 */
+  width: 100%;
+  height: 100%;
+  /* 灯光颜色 */
+  background-image: radial-gradient(#ffc97e, #ff1818, transparent 70%);
+
+  /* 定位叠中间 */
+  position: absolute;
+
+  /* 默认不亮 */
+  opacity: 0;
+  /* 关闭时慢慢灭的动画 */
+  animation: light-off 1s;
+}
+@keyframes light-off {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+}
+
+.switch .dots {
+  width: 100%;
+  height: 100%;
+  /* 中间排列的小圆点，通过圆形渐变出来 */
+  background-image: radial-gradient(transparent 30%, rgba(100, 0, 0, 0.7) 70%);
+  /* 小圆点大小，背景是自动重复排列的 */
+  background-size: 1.5vmin 1.5vmin;
+
+  /* 定位叠中间 */
+  position: absolute;
+}
+
+.switch .characters {
+  width: 100%;
+  height: 100%;
+  /* 开关字符 1通过线性渐变 0通过径向渐变，调整好各自的背景位置和大小 */
+  background: linear-gradient(#fffd, #fffd) 50% 20% / 5% 20%,
+    radial-gradient(transparent 50%, #fffd 52%, #fffd 70%, transparent 72%) 50%
+      80% / 33% 25%;
+  /* 不重复排列 */
+  background-repeat: no-repeat;
+
+  /* 定位叠中间 */
+  position: absolute;
+}
+
+.switch .shine {
+  width: 100%;
+  height: 100%;
+  /* 亮反光区域，两层，顶部最亮的反光，中间浅浅的反光 */
+  background: linear-gradient(#fff, transparent 3%),
+    linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      transparent 50%,
+      transparent 80%,
+      rgba(255, 255, 255, 0.5)
+    );
+  /* 不重复排列，背景居中、背景大小小一圈，露出边缘 */
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 97% 97%;
+
+  /* 关闭时要暗一点 */
+  opacity: 0.3;
+  /* 过渡动画 */
+  transition: all 0.3s cubic-bezier(1, 0, 1, 1);
+
+  /* 定位叠中间 */
+  position: absolute;
+}
+
+.switch .shadow {
+  width: 100%;
+  height: 100%;
+  /* 暗阴影区域 */
+  background: linear-gradient(transparent 70%, rgba(0, 0, 0, 0.8));
+  background-repeat: no-repeat;
+
+  /* 关闭时最暗 */
+  opacity: 1;
+  /* 过渡动画 */
+  transition: all 0.3s cubic-bezier(1, 0, 1, 1);
+
+  /* 定位叠中间 */
+  position: absolute;
+}
+
+.switch input:checked + .button {
+  /* 打开时中间按钮有灯光阴影 */
+  box-shadow: 0 -1vmin 2vmin #ff1818;
+  /* 开关打开时的角度，和关闭时反着 */
+  transform: translateZ(3vmin) rotateX(25deg);
+}
+.switch input:checked + .button .light {
+  /* 开关打开时的灯光闪烁动画 */
+  animation: flicker 0.2s infinite 0.3s;
+}
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.8;
+  }
+}
+.switch input:checked + .button .shine {
+  /* 打开时反光相对更亮 */
+  opacity: 1;
+}
+.switch input:checked + .button .shadow {
+  /* 打开时阴影要淡一些，也相当于更亮 */
+  opacity: 0.8;
+}
