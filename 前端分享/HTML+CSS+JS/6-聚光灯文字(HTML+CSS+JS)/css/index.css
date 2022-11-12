@@ -1,0 +1,108 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "阿里巴巴普惠体";
+  /* 把鼠标小手直接隐藏 */
+  /* cursor: none; */
+}
+body {
+  /* 超出隐藏 */
+  overflow: hidden;
+
+  /* 页面高度和简单背景颜色，颜色后面就没了 */
+  min-height: 100vh;
+  background-color: #353535;
+}
+
+.cursor {
+  /* 自定义鼠标宽高，背景颜色 */
+  width: 2vmin;
+  height: 2vmin;
+  background-color: #2244cc;
+  /* 向左上角偏移一半，让中心点对齐鼠标 */
+  margin: -1vmin 0 0 -1vmin;
+  /* ○ */
+  border-radius: 50%;
+  /* 简单给个边框 */
+  border: 0.2vmin solid #fff;
+  /* 不能选中，没有鼠标事件 */
+  user-select: none;
+  pointer-events: none;
+  /* transform 将会发生改变 */
+  will-change: transform;
+
+  /* 直接定位到页面上，并且显示层级最高 */
+  position: fixed;
+  z-index: 9999;
+}
+
+.shapes {
+  overflow: hidden;
+  /* 圆形的区域宽高，背景颜色 */
+  width: 100vw;
+  height: 100vh;
+  background-color: #2244cc;
+
+  position: relative;
+}
+.shapes .shape {
+  /* 分别设置三个圆的大小、边距和颜色 */
+  width: var(--size);
+  height: var(--size);
+  margin-top: calc(var(--size) / 2 * -1);
+  margin-left: calc(var(--size) / 2 * -1);
+
+  /* ○ */
+  border-radius: 50%;
+  /* transform 将会发生改变 */
+  will-change: transform;
+
+  /* 定位叠起来 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.shapes .shape-1 {
+  /* 超大杯 */
+  --size: 30vmin;
+  background-color: #2c8fff;
+  /* 每个圆设置不同的过渡时间 */
+  transition: all 0.3s ease-out;
+}
+.shapes .shape-2 {
+  /* 大杯 */
+  --size: 20vmin;
+  background-color: #09e2ff;
+  transition: all 0.2s ease-out;
+}
+.shapes .shape-3 {
+  /* 中杯 */
+  --size: 10vmin;
+  background-color: #ffc95d;
+  transition: all 0.1s ease-out;
+}
+
+.text {
+  /* 文字整体居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 宽高撑满屏幕 */
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  /* 背景混合模式，很多，可以查一查 */
+  mix-blend-mode: screen;
+
+  /* 定位才能正常在中间 */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.text h1 {
+  /* 标题字的大小 */
+  font-size: 15vmin;
+}
