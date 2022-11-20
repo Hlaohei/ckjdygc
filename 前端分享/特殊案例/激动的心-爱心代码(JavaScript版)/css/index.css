@@ -29,6 +29,7 @@ body {
   /* 中间文字的颜色、大小、字体阴影 */
   color: white;
   font-size: 5em;
+  text-align: center;
   text-shadow: 0 0 0.05em #fff, 0 0 0.2em #ee3e3e, 0 0 0.3em #f80808;
   /* 稍微向上移一点，看起来在中间 */
   margin-top: -0.6em;
