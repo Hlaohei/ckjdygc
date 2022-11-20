@@ -10,8 +10,7 @@ h1 {
   text-align: center;
 }
 
-.left-box,
-.right-box {
+.box {
   overflow: auto;
   max-width: 500px;
   max-height: 60vh;

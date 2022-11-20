@@ -1,0 +1,89 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  /* 黑色背景色 */
+  background-color: #000;
+}
+
+#heart {
+  /* 心的显示区域宽高 */
+  width: 750px;
+  height: 750px;
+
+  /* 心跳的动画 */
+  animation: animate 1.2s infinite;
+}
+
+#text {
+  /* 中间文字的颜色、大小、字体阴影 */
+  color: white;
+  font-size: 5em;
+  text-shadow: 0 0 0.05em #fff, 0 0 0.2em #ee3e3e, 0 0 0.3em #f80808;
+  /* 稍微向上移一点，看起来在中间 */
+  margin-top: -0.6em;
+  /* 不让选中 */
+  user-select: none;
+
+  /* 定位放中间 */
+  position: absolute;
+
+  /* 同样的跟着心跳 */
+  animation: animate 1.2s infinite;
+}
+@keyframes animate {
+  /* 动画就是简单的放大缩小 */
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #heart {
+    /* 小屏幕上面要小一圈，动画也要小一圈 */
+    transform: scale(0.5);
+    animation: animate-small 1.2s infinite;
+  }
+
+  #text {
+    /* 文字也小一点 */
+    font-size: 4em;
+    margin-top: -0.3em;
+
+    animation: animate-small 1.2s infinite;
+  }
+
+  @keyframes animate-small {
+    0% {
+      transform: scale(0.5);
+    }
+    30% {
+      transform: scale(0.4);
+    }
+    60% {
+      transform: scale(0.6);
+    }
+    100% {
+      transform: scale(0.5);
+    }
+  }
+}
