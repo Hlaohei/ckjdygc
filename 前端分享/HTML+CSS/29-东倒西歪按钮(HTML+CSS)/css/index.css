@@ -1,0 +1,98 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 解决手机浏览器点击有选框的问题 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  /* 常规居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  background-color: #c1f2fc;
+}
+
+.btn {
+  display: flex;
+
+  /* 整个按钮宽高 */
+  width: 50vmin;
+  height: 15vmin;
+  /* 父级颜色透明，通过子元素显示颜色 */
+  background-color: transparent;
+  /* 去掉默认边框，鼠标小手 */
+  border: none;
+  cursor: pointer;
+
+  /* 父级给一个透视距离，子元素旋转时才会近大远小 */
+  perspective: 100vmin;
+
+  position: relative;
+}
+
+.btn .text {
+  /* 内部元素居中显示，也就是文字居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 宽高按照父盒子撑满 */
+  width: 100%;
+  height: 100%;
+  /* 按钮背景色，加一个白色边框，给个小圆角 */
+  background-color: #55aeea;
+  border: 0.5vmin solid #fff;
+  border-radius: 2vmin;
+  /* 字体颜色、大小、字间距 */
+  color: #fff;
+  font-size: 5vmin;
+  letter-spacing: 0.5vmin;
+  /* 过渡动画，点击时柔和的运动 */
+  transition: all 0.2s;
+
+  /* 定位到中间 */
+  position: absolute;
+  /* 显示层级相对低一层，要在点击区域下面 */
+  z-index: 1;
+}
+
+.btn .part {
+  /* 让子元素的 5个点击区域的宽度平均铺开 */
+  flex-grow: 1;
+
+  /* 高度就是整个按钮的高度 */
+  height: 100%;
+  /* margin: 2px; */
+  /* background-color: pink; */
+
+  /* 显示层级相对在上层，要盖住显示区域 */
+  z-index: 2;
+}
+/* 方便调试，加个鼠标触摸换颜色 */
+/* .btn .part:hover {
+  background-color: #0005;
+} */
+
+/* 分别给 5个点击区域添加鼠标点击时的操作 */
+/* 鼠标点击的上层点击区域，但旋转显示的是下层显示区域 */
+.btn .part-1:active ~ .text {
+  transform: rotateY(-30deg);
+}
+.btn .part-2:active ~ .text {
+  /* 给每个点击区域添加合适的旋转角度 */
+  transform: rotateY(-15deg);
+}
+.btn .part-3:active ~ .text {
+  /* 中间的位置就让他缩小一圈，像点下去一样 */
+  transform: scale(0.9);
+}
+.btn .part-4:active ~ .text {
+  transform: rotateY(15deg);
+}
+.btn .part-5:active ~ .text {
+  transform: rotateY(30deg);
+}
