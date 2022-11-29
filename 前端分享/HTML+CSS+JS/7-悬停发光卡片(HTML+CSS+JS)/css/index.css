@@ -1,0 +1,112 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* 解决手机浏览器点击有选框的问题 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  /* 常规居中显示，简单背景色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background-color: #101010;
+}
+
+.cards {
+  /* 内部每个卡片铺开展示，换行显示，给个间距 */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vmin;
+
+  /* 所有卡片父盒子宽高，控制整体显示大小 */
+  width: 60vmin;
+  height: 60vmin;
+}
+
+.cards .card {
+  /* 每个卡片的宽高，要减去间距 */
+  width: calc(50% - 0.5vmin);
+  height: auto;
+  /* 底层颜色，搭配下面的 inset，隔出来一个边框 */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* 给个小圆角 */
+  border-radius: 1vmin;
+  /* 鼠标小手 */
+  cursor: pointer;
+
+  position: relative;
+}
+
+.cards .card .card-content {
+  /* 卡片内容居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 卡片中间内容区域，向内挤出一个小一圈的宽高 */
+  /* 中间的间隔就是卡片的边框 */
+  inset: 1px;
+  /* 圆角同上面一样 */
+  border-radius: inherit;
+  /* 卡片背景颜色 */
+  background-color: #151515;
+  /* 文字颜色、大小 */
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 6vmin;
+
+  /* 定位到中间 */
+  position: absolute;
+}
+
+/* 卡片层和卡片内容层的发光元素 */
+/* 就是一层在下面做 边框发光颜色 */
+/* 一层在上面做 卡片整体发光颜色 */
+.cards .card::before,
+.cards .card .card-content::before {
+  content: "";
+
+  /* 宽高都撑满整个卡片，圆角也同样继承父级 */
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+
+  /* 默认不显示发光，鼠标悬停时再显示 */
+  opacity: 0;
+  /* 简单动画 */
+  transition: opacity 0.5s;
+
+  /* 定位叠中间 */
+  position: absolute;
+}
+
+/* 中间整体的发光颜色 */
+.cards .card .card-content::before {
+  /* 径向渐变 js 动态调整圆心的位置 */
+  background: radial-gradient(
+    25vmin circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+/* 边框的发光颜色 */
+.cards .card::before {
+  /* 同样 径向渐变 动态调整圆心的位置，颜色更亮一点，光小一点 */
+  background: radial-gradient(
+    15vmin circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+}
+
+.cards:hover .card::before,
+.cards .card:hover .card-content::before {
+  /* 鼠标放上去的时候才显示发光 */
+  opacity: 1;
+}
