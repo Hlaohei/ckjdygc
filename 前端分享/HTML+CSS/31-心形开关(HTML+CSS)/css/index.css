@@ -1,0 +1,128 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* 解决手机浏览器点击有选框的问题 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  /* 常规居中显示，简单背景色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  background-color: #f6f6ff;
+}
+
+.box {
+  /* 整个父盒子区域都可以点，是个小手 */
+  cursor: pointer;
+  /* 过渡动画时间，主要是按下缩小一圈 */
+  transition: transform 0.2s;
+
+  position: relative;
+}
+.box:active {
+  /* 点击时，缩小一圈 */
+  transform: scale(0.95);
+}
+
+.box svg {
+  /* 中间心形图标的宽高，撑开整个开关区域 */
+  width: 40vmin;
+  height: 30vmin;
+  /* background-color: skyblue; */
+
+  /* 中间填充颜色 */
+  fill: #ffffff;
+  /* 描边颜色，描边头是圆润的 */
+  stroke: #d6d6ee;
+  stroke-linejoin: round;
+
+  /* 过渡动画时间 */
+  transition: all 0.4s;
+}
+.box input:checked + svg {
+  /* 开关打开时修改心形图标颜色 */
+  fill: #ee6688;
+  stroke: #ee4477;
+}
+
+.box input {
+  /* 去除默认复选框样式 */
+  appearance: none;
+
+  /* 中间滑动圆圈的宽高，简单白色背景 */
+  width: 20vmin;
+  height: 20vmin;
+  border-radius: 50%;
+  background-color: #ffffff;
+  /* 灰色阴影 */
+  box-shadow: 0 0.5vmin 2vmin rgba(0, 0, 0, 0.2);
+  /* 鼠标小手 */
+  cursor: pointer;
+
+  /* 初始位置，具体值要根据实际情况微调 */
+  position: absolute;
+  top: 2.5vmin;
+  left: 1.5vmin;
+
+  /* 开关未打开时，默认使用关闭的动画，然后停在初始位置 */
+  animation: animate-off 0.4s linear forwards;
+}
+.box input:checked {
+  /* 开关打开时，使用打开动画，然后停在打开的位置 */
+  animation: animate 0.4s linear forwards;
+}
+@keyframes animate {
+  /* 动画就是简单的位置变换，要根据情况调整 */
+  0% {
+    top: 2.5vmin;
+    left: 1.5vmin;
+  }
+  25% {
+    top: 5.5vmin;
+    left: 5vmin;
+  }
+  50% {
+    top: 7vmin;
+    left: 10vmin;
+    /* 到正中间时圆大一小圈 */
+    transform: scale(1.05);
+  }
+  75% {
+    top: 5.5vmin;
+    left: 15vmin;
+  }
+  100% {
+    top: 2.5vmin;
+    left: 18.5vmin;
+  }
+}
+@keyframes animate-off {
+  /* 关闭的动画就是反着来 */
+  0% {
+    top: 2.5vmin;
+    left: 18.5vmin;
+  }
+  25% {
+    top: 5.5vmin;
+    left: 15vmin;
+  }
+  50% {
+    top: 7vmin;
+    left: 10vmin;
+    transform: scale(1.05);
+  }
+  75% {
+    top: 5.5vmin;
+    left: 5vmin;
+  }
+  100% {
+    top: 2.5vmin;
+    left: 1.5vmin;
+  }
+}
