@@ -1,0 +1,73 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 超出页面部分隐藏 */
+  overflow: hidden;
+
+  min-height: 100vh;
+  /* 简单背景色 */
+  background-color: #111111;
+}
+
+.snow,
+.snow::before,
+.snow::after {
+  /* 所有雪的元素，就从一个 div 延伸开 */
+  content: "";
+
+  /* 使用径向渐变做出雪花的样子 */
+  /* 不同大小，不同位置，尽量错开位置 */
+  background: radial-gradient(3px 3px at 100px 50px, #fff, transparent),
+    radial-gradient(4px 4px at 200px 150px, #fff, transparent),
+    radial-gradient(5px 5px at 300px 80px, #fff, transparent),
+    radial-gradient(6px 6px at 400px 130px, #fff, transparent),
+    radial-gradient(3px 3px at 540px 480px, #fff, transparent),
+    radial-gradient(4px 4px at 50px 230px, #fff, transparent),
+    radial-gradient(5px 5px at 120px 680px, #fff, transparent),
+    radial-gradient(6px 6px at 223px 430px, #fff, transparent),
+    radial-gradient(3px 3px at 700px 300px, #fff, transparent),
+    radial-gradient(4px 4px at 760px 550px, #fff, transparent),
+    radial-gradient(5px 5px at 550px 280px, #fff, transparent),
+    radial-gradient(6px 6px at 650px 630px, #fff, transparent);
+  /* 限制雪花显示的范围，剩下的部分会自动复制填满 */
+  background-size: 800px 800px;
+
+  /* 让雪花定位显示在中间 */
+  position: absolute;
+  /* inset 在这相当于 top、right、bottom、left */
+  inset: -800px 0 0 0;
+
+  /* 雪花下落的动画 */
+  animation: animate 5s linear infinite;
+}
+.snow::before {
+  /* 错开显示多层雪花 */
+  margin: -390px;
+  /* 降低一点透明度，分层更明显 */
+  opacity: 0.6;
+
+  /* 下落动画的时间不一样，也是尽量错开 */
+  animation-duration: 6s;
+  animation-delay: -1.5s;
+}
+.snow::after {
+  /* 同上 */
+  margin: -130px;
+  opacity: 0.8;
+
+  animation-duration: 10s;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    /* 动画就是简单的往下移动 */
+    transform: translateY(800px);
+  }
+}
