@@ -1,0 +1,160 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示，简单背景色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  background-color: #e7edfe;
+}
+
+.box {
+  /* 父盒子宽高，确定整个动画大小区域 */
+  width: 30vmin;
+  height: 30vmin;
+  /* background-color: #fff; */
+
+  position: relative;
+}
+
+.box .ring {
+  /* 圆环外圈大小 */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* 阴影部分主要就是雪被压下去的感觉，形成暗色背光区域 */
+  box-shadow: 0 -1vmin 0.8vmin rgba(0, 0, 0, 0.15),
+    inset 0 1vmin 1.5vmin rgba(0, 0, 0, 0.15),
+    0 0.75vmin 1vmin rgba(255, 255, 255, 0.4),
+    inset 0 -1vmin 1.25vmin rgba(255, 255, 255, 0.4);
+
+  /* 基本所有元素都要定位叠中间 */
+  position: absolute;
+}
+.box .ring::before {
+  content: "";
+
+  /* 圆环内圈大小，通过 inset 向内部挤压出圆 */
+  inset: 11%;
+  border-radius: 50%;
+  /* 同上，主要是体现出雪被压的感觉 */
+  box-shadow: 0 -0.75vmin 1vmin rgba(255, 255, 255, 0.4),
+    inset 0 1vmin 1.25vmin rgba(255, 255, 255, 0.4),
+    0 1vmin 0.8vmin rgba(0, 0, 0, 0.15),
+    inset 0 -1vmin 1.25vmin rgba(0, 0, 0, 0.15);
+
+  position: absolute;
+}
+.box .ring::after {
+  content: "";
+
+  /* 被雪盖住的部分大小，要大一圈，所以反向挤压 */
+  inset: -10%;
+  /* 通过 锥形渐变 来盖住写好的圆环部分 */
+  background: conic-gradient(#e7edfe 150deg, transparent 250deg);
+
+  position: absolute;
+  /* 雪球转动的时候要跟着转 */
+  animation: mask 5s linear infinite;
+}
+@keyframes mask {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ball {
+  /* 雪球大小，基础颜色 */
+  width: 5.5vmin;
+  height: 5.5vmin;
+  border-radius: 50%;
+  background-color: #fff;
+
+  /* 定位到正中间 */
+  position: absolute;
+  top: calc(50% - 2.75vmin);
+  left: calc(50% - 2.75vmin);
+  /* 默认不转，位移到圆环里面 */
+  transform: rotate(0) translateY(-13.5vmin);
+  /* 雪球转圈动画 */
+  animation: ball 5s linear infinite;
+}
+@keyframes ball {
+  0% {
+    transform: rotate(0) translateY(-13.5vmin);
+  }
+  50% {
+    /* 配合阴影部分，中间下面位置要偏一点 */
+    transform: rotate(180deg) translateY(-13vmin);
+  }
+  100% {
+    /* 转一圈回去 */
+    transform: rotate(360deg) translateY(-13.5vmin);
+  }
+}
+
+.ball .texture {
+  /* 雪球纹理部分大小 */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  /* 隐藏超出的部分 */
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+.ball .texture::before {
+  content: "";
+
+  /* 纹理大小，宽两倍，是要重复两次图片背景 */
+  width: 200%;
+  height: 100%;
+  /* 引入雪球纹理背景图 */
+  background: url(../image/snow.jpg);
+  /* 背景图占整体的一半，剩下一半自动补上 */
+  background-size: 50% 100%;
+  /* 滤镜提高雪球亮度 */
+  filter: brightness(1.05);
+
+  /* 定位靠右 */
+  position: absolute;
+  right: 0;
+
+  /* 纹理移动动画 */
+  animation: texture 0.5s linear infinite;
+}
+@keyframes texture {
+  100% {
+    /* 就是平移一半，一直重复 */
+    transform: translateX(50%);
+  }
+}
+
+.ball .shadow {
+  /* 球体阴影大小 */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* 内外多层有阴影，球体也有背光面 */
+  box-shadow: 0 0.1vmin 0.75vmin rgba(0, 0, 0, 0.3),
+    inset 0 0 0.75vmin rgba(0, 0, 0, 0.1),
+    inset 0 -1vmin 1vmin rgba(236, 8, 8, 0.15);
+
+  position: absolute;
+  top: 0;
+
+  /* 阴影动画 */
+  animation: shadow 5s linear infinite;
+}
+@keyframes shadow {
+  100% {
+    /* 反着转，保持同一背光面 */
+    transform: rotate(-360deg);
+  }
+}
