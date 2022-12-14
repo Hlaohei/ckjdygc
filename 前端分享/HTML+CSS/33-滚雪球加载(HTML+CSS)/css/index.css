@@ -144,7 +144,7 @@ body {
   /* 内外多层有阴影，球体也有背光面 */
   box-shadow: 0 0.1vmin 0.75vmin rgba(0, 0, 0, 0.3),
     inset 0 0 0.75vmin rgba(0, 0, 0, 0.1),
-    inset 0 -1vmin 1vmin rgba(236, 8, 8, 0.15);
+    inset 0 -1vmin 1vmin rgba(0, 0, 0, 0.15);
 
   position: absolute;
   top: 0;
