@@ -428,11 +428,11 @@ function addSnow(scene, uniforms) {
     scene.add(mesh);
   }
   const sprites = [
-    "./image/snowflake1.png",
-    "./image/snowflake2.png",
-    "./image/snowflake3.png",
-    "./image/snowflake4.png",
-    "./image/snowflake5.png",
+    "image/snowflake1.png",
+    "image/snowflake2.png",
+    "image/snowflake3.png",
+    "image/snowflake4.png",
+    "image/snowflake5.png",
   ];
   sprites.forEach((sprite) => {
     createSnowSet(sprite);
@@ -468,7 +468,7 @@ function addPlane(scene, uniforms, totalPoints) {
     uniforms: {
       ...uniforms,
       pointTexture: {
-        value: new THREE.TextureLoader().load(`./image/spark1.png`),
+        value: new THREE.TextureLoader().load(`image/spark1.png`),
       },
     },
     vertexShader,
