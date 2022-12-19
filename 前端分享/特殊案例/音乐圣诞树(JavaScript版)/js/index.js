@@ -468,7 +468,7 @@ function addPlane(scene, uniforms, totalPoints) {
     uniforms: {
       ...uniforms,
       pointTexture: {
-        value: new THREE.TextureLoader().load(`./image/spark1.png`),
+        value: new THREE.TextureLoader().load(`././image/spark1.png`),
       },
     },
     vertexShader,
