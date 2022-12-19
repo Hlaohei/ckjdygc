@@ -468,7 +468,10 @@ function addPlane(scene, uniforms, totalPoints) {
     uniforms: {
       ...uniforms,
       pointTexture: {
-        value: new THREE.TextureLoader().load(`././image/spark1.png`),
+        // NOTE: 引图片的路径有问题，暂时先用完整在线链接
+        value: new THREE.TextureLoader().load(
+          `https://ckjdygc.laohei.vip/前端分享/特殊案例/音乐圣诞树(JavaScript版)/image/spark1.png`
+        ),
       },
     },
     vertexShader,
