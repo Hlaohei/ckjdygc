@@ -428,11 +428,11 @@ function addSnow(scene, uniforms) {
     scene.add(mesh);
   }
   const sprites = [
-    "../image/snowflake1.png",
-    "../image/snowflake2.png",
-    "../image/snowflake3.png",
-    "../image/snowflake4.png",
-    "../image/snowflake5.png",
+    "./image/snowflake1.png",
+    "./image/snowflake2.png",
+    "./image/snowflake3.png",
+    "./image/snowflake4.png",
+    "./image/snowflake5.png",
   ];
   sprites.forEach((sprite) => {
     createSnowSet(sprite);
@@ -468,7 +468,7 @@ function addPlane(scene, uniforms, totalPoints) {
     uniforms: {
       ...uniforms,
       pointTexture: {
-        value: new THREE.TextureLoader().load(`../image/spark1.png`),
+        value: new THREE.TextureLoader().load(`./image/spark1.png`),
       },
     },
     vertexShader,
@@ -517,12 +517,12 @@ function addPlane(scene, uniforms, totalPoints) {
 }
 
 function addListners(camera, renderer, composer) {
-  document.addEventListener("keydown", (e) => {
-    const { x, y, z } = camera.position;
-    console.log(`camera.position.set(${x},${y},${z})`);
-    const { x: a, y: b, z: c } = camera.rotation;
-    console.log(`camera.rotation.set(${a},${b},${c})`);
-  });
+  // document.addEventListener("keydown", (e) => {
+  // const { x, y, z } = camera.position;
+  // console.log(`camera.position.set(${x},${y},${z})`);
+  // const { x: a, y: b, z: c } = camera.rotation;
+  // console.log(`camera.rotation.set(${a},${b},${c})`);
+  // });
 
   window.addEventListener(
     "resize",
