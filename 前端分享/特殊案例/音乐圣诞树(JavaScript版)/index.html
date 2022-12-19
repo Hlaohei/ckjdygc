@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <title>🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄</title>
+
+  <link rel="stylesheet" href="./css/index.css">
+
+  <!-- 国外CDN资源 -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/postprocessing/EffectComposer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/postprocessing/RenderPass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/postprocessing/ShaderPass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/shaders/CopyShader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+
+</head>
+
+<body>
+
+  <!-- 音乐选择页面，选择完之后会覆盖替换掉 -->
+  <div id="overlay">
+    <!-- 音乐列表整体盒子 -->
+    <div id="music-list-box">
+      <h2>选择一首音乐开始</h2>
+      <!-- 默认基础音乐列表 -->
+      <ul id="base-music-list"></ul>
+
+      <ul id="upload-music">
+        <li class="separator">或</li>
+        <!-- 上传本地音乐 -->
+        <li>
+          <label class="upload-btn" for="upload">上传音乐文件</label>
+          <input type="file" id="upload" hidden />
+        </li>
+      </ul>
+    </div>
+
+    <!-- 背景星星动画，也会被覆盖掉 -->
+    <canvas id="overlay-bg"></canvas>
+  </div>
+
+  <script src="./js/index.js"></script>
+  <script src="./js/overlay-bg.js"></script>
+
+</body>
+
+</html>
