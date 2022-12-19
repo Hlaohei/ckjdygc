@@ -253,7 +253,7 @@ function addTree(scene, uniforms, totalPoints, treePosition) {
     uniforms: {
       ...uniforms,
       pointTexture: {
-        value: new THREE.TextureLoader().load(`../image/spark1.png`),
+        value: new THREE.TextureLoader().load(`././image/spark1.png`),
       },
     },
     vertexShader,
