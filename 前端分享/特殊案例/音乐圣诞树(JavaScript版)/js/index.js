@@ -1,5 +1,9 @@
 /**
  * 音乐列表
+ * 可自行添加不同音乐，页面会自动添加
+ *
+ * name: 音乐名称
+ * url: 音乐文件链接，可以是网址，也可以是本地文件，写好对应的地址就行
  */
 const musicList = [
   {
@@ -198,7 +202,7 @@ function loadAudio(i) {
   document.getElementById("overlay").innerHTML =
     '<div class="text-loading">别着急，正在打开...</div>';
 
-  // 原音乐列表
+  // 原：音乐列表
   // const files = [
   // "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Simon_Panrucker/Happy_Christmas_You_Guys/Simon_Panrucker_-_01_-_Snowflakes_Falling_Down.mp3",
   // "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Dott/This_Christmas/Dott_-_01_-_This_Christmas.mp3",
@@ -207,7 +211,7 @@ function loadAudio(i) {
   // ];
   // const file = files[i];
 
-  // 现在改为从最顶上音乐列表中获取
+  // 现：在改为从最顶上音乐列表中获取
   const file = musicList[i].url;
 
   const loader = new THREE.AudioLoader();
@@ -283,10 +287,7 @@ function addTree(scene, uniforms, totalPoints, treePosition) {
     uniforms: {
       ...uniforms,
       pointTexture: {
-        value: new THREE.TextureLoader().load(
-          "././image/spark1.png"
-          // `https://ckjdygc.laohei.vip/前端分享/特殊案例/音乐圣诞树(JavaScript版)/image/spark1.png`
-        ),
+        value: new THREE.TextureLoader().load("././image/spark1.png"),
       },
     },
     vertexShader,
@@ -501,11 +502,7 @@ function addPlane(scene, uniforms, totalPoints) {
     uniforms: {
       ...uniforms,
       pointTexture: {
-        // NOTE: 引图片的路径有问题，暂时先用完整在线链接
-        value: new THREE.TextureLoader().load(
-          "././image/spark1.png"
-          // `https://ckjdygc.laohei.vip/前端分享/特殊案例/音乐圣诞树(JavaScript版)/image/spark1.png`
-        ),
+        value: new THREE.TextureLoader().load("././image/spark1.png"),
       },
     },
     vertexShader,
