@@ -35,18 +35,17 @@
         <li class="separator">或</li>
         <!-- 上传本地音乐 -->
         <li>
-          <label class="upload-btn" for="upload">上传音乐文件</label>
+          <label class="upload-btn" for="upload">打开音乐文件</label>
           <input type="file" id="upload" hidden />
         </li>
       </ul>
     </div>
 
     <!-- 背景星星动画，也会被覆盖掉 -->
-    <canvas id="overlay-bg"></canvas>
+    <iframe id="overlay-bg" src="overlay-bg.html" frameborder="0"></iframe>
   </div>
 
   <script src="./js/index.js"></script>
-  <script src="./js/overlay-bg.js"></script>
 
 </body>
 
