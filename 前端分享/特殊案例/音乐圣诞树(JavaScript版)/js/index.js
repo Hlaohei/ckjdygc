@@ -32,6 +32,34 @@ musicList.forEach((item) => {
 baseMusicListBox.appendChild(fragment);
 
 /**
+ * 自动填充文字部分
+ */
+let text = "Merry Christmas!<br>圣诞快乐";
+/**
+ * 获取 url 参数
+ * @param {*} variable 传入 key
+ * @returns 有值就返回值，没有就返回 false
+ */
+const getQueryVariable = (variable) => {
+  let query = window.location.search.substring(1);
+  let vars = query.split("&");
+  for (let i = 0; i < vars.length; i++) {
+    let pair = vars[i].split("=");
+    if (pair[0] == variable) {
+      return decodeURI(pair[1]);
+    }
+  }
+  return false;
+};
+/**
+ * 将 url 地址中的 t 参数放入文字显示区域
+ */
+let t = getQueryVariable("t");
+if (t) {
+  text = t;
+}
+
+/**
  * ---------------- 分割线 -----------------
  */
 /**
@@ -91,7 +119,17 @@ function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  // 原：只添加渲染动画到 body
+  // document.body.appendChild(renderer.domElement);
+
+  // 现：多添加一个文字元素到 body
+  let fragmentDom = document.createDocumentFragment();
+  fragmentDom.appendChild(renderer.domElement);
+  let h1 = document.createElement("h1");
+  h1.id = "sentence-box";
+  h1.innerHTML = text || "";
+  fragmentDom.appendChild(h1);
+  document.body.appendChild(fragmentDom);
 
   camera = new THREE.PerspectiveCamera(
     60,
