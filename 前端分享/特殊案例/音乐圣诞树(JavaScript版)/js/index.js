@@ -3,28 +3,20 @@
  */
 const musicList = [
   {
-    name: "All I Want For Christmas Is You",
-    url: "https://m701.music.126.net/20221219212915/e7b9df9fe60b3dc8599323c60298e2fa/jdyyaac/obj/w5rDlsOJwrLDjj7CmsOj/22259857779/3192/077d/9be8/8806939ba8e49fd33db91610208d888f.m4a",
-  },
-  {
-    name: "Jingle Bell",
-    url: "https://m701.music.126.net/20221219180628/290ed404d5fd0b4a6b3ddd10cf577b05/jdyyaac/obj/w5rDlsOJwrLDjj7CmsOj/12103690438/fb68/00aa/42ea/7fbbd7ebf23a908b651981d042268230.m4a",
-  },
-  {
-    name: "It's Beginning To Look A Lot Like Christmas",
-    url: "https://m801.music.126.net/20221219213843/61d6f2303a0ce5d7246cfd5037a18f8a/jdyyaac/045a/075e/025b/309dbdf40a0420b2fb0e51bc3380c027.m4a",
-  },
-  {
-    name: "Santa Tell Me",
-    url: "https://m10.music.126.net/20221219221455/5e923183bf497416b5a7ae94197c8ab9/yyaac/obj/wonDkMOGw6XDiTHCmMOi/3058803727/43b3/3df3/b677/ad1893fb864a69bb19c5294d9a22168a.m4a",
-  },
-  {
-    name: "Cozy Little Christmas",
-    url: "https://m801.music.126.net/20221219221827/6436d02256bd480e2ed60bef2255efb9/jdyyaac/obj/w5rDlsOJwrLDjj7CmsOj/18912618358/edaf/6723/35af/b651cd9ff722784beee5df48a8203f48.m4a",
-  },
-  {
     name: "Snowflakes Falling Down",
     url: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Simon_Panrucker/Happy_Christmas_You_Guys/Simon_Panrucker_-_01_-_Snowflakes_Falling_Down.mp3",
+  },
+  {
+    name: "Jingle Bell Swing",
+    url: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Mark_Smeby/En_attendant_Nol/Mark_Smeby_-_07_-_Jingle_Bell_Swing.mp3",
+  },
+  {
+    name: "This Christmas",
+    url: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Dott/This_Christmas/Dott_-_01_-_This_Christmas.mp3",
+  },
+  {
+    name: "No room at the inn",
+    url: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/TRG_Banks/TRG_Banks_Christmas_Album/TRG_Banks_-_12_-_No_room_at_the_inn.mp3",
   },
 ];
 /**
