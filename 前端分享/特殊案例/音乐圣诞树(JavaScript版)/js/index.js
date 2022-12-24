@@ -287,7 +287,11 @@ function addTree(scene, uniforms, totalPoints, treePosition) {
     uniforms: {
       ...uniforms,
       pointTexture: {
-        value: new THREE.TextureLoader().load("././image/spark1.png"),
+        value: new THREE.TextureLoader().load(
+          // NOTE: 链接会有路径问题，打不开的话记得修改
+          // "././image/spark1.png"
+          `https://assets.codepen.io/3685267/spark1.png`
+        ),
       },
     },
     vertexShader,
@@ -462,11 +466,18 @@ function addSnow(scene, uniforms) {
     scene.add(mesh);
   }
   const sprites = [
-    "./image/snowflake1.png",
-    "./image/snowflake2.png",
-    "./image/snowflake3.png",
-    "./image/snowflake4.png",
-    "./image/snowflake5.png",
+    "https://assets.codepen.io/3685267/snowflake1.png",
+    "https://assets.codepen.io/3685267/snowflake2.png",
+    "https://assets.codepen.io/3685267/snowflake3.png",
+    "https://assets.codepen.io/3685267/snowflake4.png",
+    "https://assets.codepen.io/3685267/snowflake5.png",
+
+    // NOTE: 链接会有路径问题，打不开的话记得修改
+    // "./image/snowflake1.png",
+    // "./image/snowflake2.png",
+    // "./image/snowflake3.png",
+    // "./image/snowflake4.png",
+    // "./image/snowflake5.png",
   ];
   sprites.forEach((sprite) => {
     createSnowSet(sprite);
@@ -502,7 +513,11 @@ function addPlane(scene, uniforms, totalPoints) {
     uniforms: {
       ...uniforms,
       pointTexture: {
-        value: new THREE.TextureLoader().load("././image/spark1.png"),
+        value: new THREE.TextureLoader().load(
+          // NOTE: 链接会有路径问题，打不开的话记得修改
+          // "././image/spark1.png"
+          `https://assets.codepen.io/3685267/spark1.png`
+        ),
       },
     },
     vertexShader,
