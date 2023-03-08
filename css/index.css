@@ -37,3 +37,11 @@ ul li a {
   color: rgba(255, 255, 255, 0.9);
   text-align: left;
 }
+
+.beian {
+  text-align: center;
+}
+
+.beian a {
+  color: rgba(255, 255, 255, 0.6);
+}
