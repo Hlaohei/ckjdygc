@@ -1,0 +1,104 @@
+* {
+  /* 常规初始化操作 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  /* 简单背景色 */
+  background: linear-gradient(
+    to top,
+    #d3d3d3 0%,
+    #e0e0e0 25%,
+    #efefef 50%,
+    #d9d9d9 75%,
+    #bcbcbc 100%
+  );
+}
+
+.box {
+  /* 使用 css 变量，方便统一修改大小颜色等 */
+  /* 数字基础色 */
+  --color: #1e1e22;
+  /* 数字亮起来的红色 */
+  --color-active: #ff0000;
+  /* 数字单个 led灯 的厚度 */
+  --number-thickness: 1.5vmin;
+  /* 数字单个 led灯 的长度 */
+  --number-length: 4.5vmin;
+  /* 数字单个 led灯 之间的间距 */
+  --number-gap: 0.1vmin;
+
+  /* 平铺开父盒子内所有数字元素 */
+  display: flex;
+  gap: calc(var(--number-thickness) * 1.5);
+
+  /* 父盒子大背景色 */
+  background-color: #060606;
+  /* 大边框 */
+  border: calc(var(--number-thickness) * 1.5) solid #363636;
+  /* 大圆角 */
+  border-radius: calc(var(--number-thickness) * 3);
+  /* 父盒子内部撑开的距离 */
+  padding: calc(var(--number-thickness) * 2);
+  /* 父盒子外部阴影 */
+  box-shadow: 0 6vmin 20vmin rgba(0, 0, 0, 0.6);
+}
+
+.colon {
+  /* 两点冒号，竖向排开 */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* 间距按大致比例加减 */
+  gap: calc(var(--number-thickness) * 2.5);
+}
+.colon::before,
+.colon::after {
+  content: "";
+
+  /* 两个点的宽高，圆，背景色 */
+  width: var(--number-thickness);
+  height: var(--number-thickness);
+  border-radius: 50%;
+  background-color: var(--color-active);
+  /* 灯光亮起的一点扩散阴影 */
+  filter: drop-shadow(0 0 1vmin var(--color-active));
+}
+
+.box .number {
+  display: grid;
+  /* 数字单个 led灯 之间的间距 */
+  gap: var(--number-gap);
+  /* 使用 grid-template 来布局 7个led灯 的位置和大小 */
+  grid-template:
+    ".... r1c2 ...." var(--number-thickness)
+    "r2c1 .... r2c3" var(--number-length)
+    ".... r3c2 ...." var(--number-thickness)
+    "r4c1 .... r4c3" var(--number-length)
+    ".... r5c2 ...." var(--number-thickness) /
+    var(--number-thickness) var(--number-length) var(--number-thickness);
+}
+
+.box .number span {
+  /* 每个 led灯的元素绑定 grid-template 模板的名称，和上面对应 */
+  grid-area: var(--ga-name);
+  /* 数字基础色 */
+  background-color: var(--color);
+  /* 圆角 */
+  border-radius: var(--number-thickness);
+}
+
+.box .number span.active {
+  /* 数字亮起来的颜色 */
+  background-color: var(--color-active);
+  /* 灯光亮起的一点扩散阴影 */
+  filter: drop-shadow(0 0 0.75vmin var(--color-active));
+}
