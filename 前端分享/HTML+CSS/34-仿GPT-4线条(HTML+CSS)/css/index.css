@@ -1,0 +1,69 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* 常规居中显示 */
+  display: grid;
+  place-items: center;
+  align-content: center;
+  overflow: hidden;
+
+  min-height: 100vh;
+  /* 黑色背景 */
+  background-color: #000000;
+}
+
+.box {
+  /* grid、gap 让上下每一行都排开 */
+  display: grid;
+  gap: 6vmin;
+}
+
+.row {
+  /* 简单限制一下线条动画位置 */
+  width: 100%;
+  position: relative;
+}
+
+.lines {
+  /* 一行内的每个线条都横向排开 */
+  display: flex;
+
+  /* 位移动画，无限循环，动画时间就是 --d */
+  animation: animate var(--d) linear infinite;
+}
+@keyframes animate {
+  from {
+    /* 使用 --from 和 --to 传递位移的位置，方便使动画不同方向 */
+    translate: var(--from) 0;
+  }
+  to {
+    translate: var(--to) 0;
+  }
+}
+.row:nth-child(odd) {
+  /* 奇数行从左往右移动 */
+  --from: -50%;
+  --to: 0%;
+}
+.row:nth-child(even) {
+  /* 偶数行从右往左 */
+  --to: -50%;
+}
+
+.lines span {
+  display: inline-block;
+  /* 自动填补空缺的宽度 */
+  flex: 1 0 auto;
+
+  /* 每个小线条的宽高，颜色 */
+  width: calc(10vmin * var(--w));
+  height: 1.2vmin;
+  background-color: var(--color);
+  /* 每个线条的间距大小 */
+  margin-right: 6vmin;
+}

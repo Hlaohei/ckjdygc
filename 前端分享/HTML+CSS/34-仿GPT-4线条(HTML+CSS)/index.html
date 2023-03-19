@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <title>34 - 仿GPT-4线条 (HTML+CSS)</title>
+
+  <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body>
+
+  <!-- 父盒子 -->
+  <div class="box">
+    <!-- 每行元素，--d 表示每行线条的滚动时间 -->
+    <div class="row" style="--d: 20s">
+      <!-- 一行里面所有线条元素 -->
+      <div class="lines">
+        <!-- --w 表示单个线条宽度，--color 表示单个线条颜色 -->
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 8; --color: #51da4b"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 7; --color: #fff"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+
+        <!-- 线条有双份一模一样，用于模拟无缝循环动画 -->
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 8; --color: #51da4b"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 7; --color: #fff"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+      </div>
+    </div>
+
+    <!-- 每行的动画时间，线条宽度和颜色随机打乱就行 -->
+    <div class="row" style="--d: 28s">
+      <div class="lines">
+        <span style="--w: 8; --color: #fff"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 3; --color: #51da4b"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+        <span style="--w: 7; --color: #fff"></span>
+
+        <span style="--w: 8; --color: #fff"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 3; --color: #51da4b"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+        <span style="--w: 7; --color: #fff"></span>
+      </div>
+    </div>
+
+    <div class="row" style="--d: 25s">
+      <div class="lines">
+        <span style="--w: 5; --color: #51da4b"></span>
+        <span style="--w: 6; --color: #fff"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 2; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+
+        <span style="--w: 5; --color: #51da4b"></span>
+        <span style="--w: 6; --color: #fff"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 2; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+      </div>
+    </div>
+
+    <div class="row" style="--d: 19s">
+      <div class="lines">
+        <span style="--w: 9; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 8; --color: #fff"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+
+        <span style="--w: 9; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 8; --color: #fff"></span>
+        <span style="--w: 3; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+      </div>
+    </div>
+
+    <div class="row" style="--d: 23s">
+      <div class="lines">
+        <span style="--w: 6; --color: #51da4b"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 2; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 8; --color: #fff"></span>
+        <span style="--w: 2; --color: #51da4b"></span>
+
+        <span style="--w: 6; --color: #51da4b"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 2; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 8; --color: #fff"></span>
+        <span style="--w: 2; --color: #51da4b"></span>
+      </div>
+    </div>
+
+    <div class="row" style="--d: 24s">
+      <div class="lines">
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+        <span style="--w: 4; --color: #fff"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 6; --color: #51da4b"></span>
+        <span style="--w: 4; --color: #fff"></span>
+        <span style="--w: 5; --color: #fff"></span>
+        <span style="--w: 4; --color: #51da4b"></span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
