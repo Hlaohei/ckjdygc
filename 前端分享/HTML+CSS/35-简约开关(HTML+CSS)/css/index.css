@@ -1,0 +1,94 @@
+:root {
+  /* 颜色变量，统一颜色 */
+  --bg-color: #001c27;
+  --rail-color: #0a2d3a;
+  --switch-color: #21a6ad;
+  --switch-active-color: #05e6f2;
+}
+
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  min-height: 100vh;
+  /* 要统一背景色 */
+  background-color: var(--bg-color);
+}
+
+.switch-box {
+  display: block;
+
+  /* 父盒子确定整个开关的宽高 */
+  width: 40vmin;
+  height: 20vmin;
+  /* 鼠标小手 */
+  cursor: pointer;
+
+  /* 确定基础定位点 */
+  position: relative;
+}
+
+.switch-box input {
+  /* 隐藏 checkbox 基础样式 */
+  appearance: none;
+
+  /* 中间横条轨道的宽高，颜色，圆角 */
+  width: calc(100% - 4vmin);
+  height: 4vmin;
+  background-color: var(--rail-color);
+  border-radius: 10vmin;
+
+  /* 定位在中间 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  /* transform: translate(-50%, -50%); */
+}
+
+.switch-box .circle {
+  /* 开关圆圈的宽高，颜色，○ */
+  width: 20vmin;
+  height: 20vmin;
+  background-color: var(--bg-color);
+  border-radius: 50%;
+
+  /* 定位在左边 */
+  position: absolute;
+  left: 0;
+  /* 过度动画时间 */
+  transition: all 0.4s;
+}
+
+.switch-box .circle::after {
+  content: "";
+
+  /* 内圆 */
+  inset: 2vmin;
+  background-color: var(--bg-color);
+  border-radius: 50%;
+  /* 通过内阴影做颜色填充的动画，初始为一个圈 */
+  box-shadow: inset 0 0 0 2vmin var(--switch-color);
+
+  /* 定位在中间 */
+  position: absolute;
+  transition: all 0.4s;
+}
+
+.switch-box input:checked ~ .circle {
+  /* 开关打开后，移动到右边位置，注意减掉本身的宽度 */
+  left: calc(100% - 20vmin);
+}
+.switch-box input:checked ~ .circle::after {
+  /* 开关打开后，内阴影填充满整个圆，配合过渡时间，就是慢慢填充 */
+  box-shadow: inset 0 0 0 10vmin var(--switch-active-color);
+}
