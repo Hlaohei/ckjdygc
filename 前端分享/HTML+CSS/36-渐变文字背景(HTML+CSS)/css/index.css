@@ -1,0 +1,42 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  /* 简单背景色，字体调大 */
+  background-color: #fcfcfc;
+  font-size: 5vmin;
+}
+
+.text-bg {
+  /* 字体默认颜色，边距 */
+  color: #ffffff;
+  padding: 0 2vmin;
+
+  /* 渐变色背景，居中，背景小一点露出行间距，不重复显示 */
+  background: linear-gradient(30deg, #2cd8d5, #c5c1ff, #ffbac3) center;
+  background-size: 100% 90%;
+  background-repeat: no-repeat;
+
+  /* 过渡动画时间 */
+  transition: all 0.4s;
+}
+
+.text-bg:hover {
+  /* 鼠标放上来，改变背景大小、位置 */
+  background-size: 100% 10%;
+  background-position-y: 88%;
+
+  /* 改变文字颜色，文字添加简单描边 */
+  color: #2c2c2c;
+  text-shadow: 0.05em 0.05em 0 #fcfcfc, -0.05em 0.05em 0 #fcfcfc,
+    0 0.05em 0 #fcfcfc;
+}
