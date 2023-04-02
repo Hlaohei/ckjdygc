@@ -1,0 +1,124 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示，简单背景色 */
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background: linear-gradient(10deg, #0d9545, #45b9dd);
+}
+.box {
+  /* 卡片排列开，加间距 */
+  display: flex;
+  gap: 5vmin;
+}
+
+.card {
+  /* 卡片宽高，高度通过比例自动，圆角，卡片阴影 */
+  width: 30vmin;
+  aspect-ratio: 3/4;
+  border-radius: 1vmin;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 5vmin 6vmin -8vmin,
+    var(--color) 0 4.5vmin 5vmin -6vmin,
+    rgba(50, 50, 50, 0.5) 0 4vmin 8vmin -2vmin,
+    rgba(0, 0, 0, 0.8) 0 4vmin 5vmin -3vmin;
+
+  /* 超出部分隐藏，定位点 */
+  overflow: hidden;
+  position: relative;
+}
+
+.card img {
+  /* 图片宽高，直接铺满整个卡片，按比例缩放 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* 给个定位脱离原位置，加上过渡动画 */
+  position: absolute;
+  transition: all 0.8s;
+}
+.card:hover img {
+  /* 鼠标放入 图片放大一点 */
+  transform: scale(1.1);
+}
+
+.card::before,
+.card::after {
+  content: "";
+  /* 黑色透明蒙版的宽高，分上下两段，所以高度 50% */
+  width: 100%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  /* 定位在图片上面 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  /* 默认横向缩小到 0就看不见了，再添加过渡动画，过渡起点是左边开始 */
+  transform: scaleX(0);
+  transition: all 0.5s;
+  transform-origin: left;
+}
+.card::after {
+  /* 蒙版下半部分，定位到下一半，并添加过渡延时，比上半部分慢一点 */
+  top: 50%;
+  transition-delay: 0.15s;
+}
+.card:hover::before,
+.card:hover::after {
+  /* 鼠标放入直接 横向缩放 还原大小，配合动画时间 */
+  transform: scaleX(1);
+}
+
+.card .text-box {
+  /* 文字默认颜色，大小，字间距 */
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5vmin;
+  letter-spacing: 0.1vmin;
+
+  /* 显示区域是向内部缩小挤出来 */
+  inset: 2vmin;
+  /* 定位在底部 */
+  position: absolute;
+  top: auto;
+  /* 显示层级比黑色蒙版高 */
+  z-index: 2;
+}
+.card .text-box h2,
+.card .text-box p {
+  /* 文字默认颜色改为图文主题的颜色 */
+  color: var(--color);
+  /* 默认隐藏，不显示 */
+  opacity: 0;
+  /* 默认文字在底部以外的位置 */
+  transform: translateY(10vmin);
+
+  /* 过渡动画时间，文字颜色稍微长一些，不然不明显 */
+  transition: all 0.8s, color 3s;
+}
+.card .text-box h2 {
+  /* 大标题字体变大，加粗，距离下面多一点 */
+  font-size: 6vmin;
+  font-weight: bold;
+  margin-bottom: 1vmin;
+}
+.card .text-box p {
+  /* 文字段 晚一点开始动画 */
+  transition-delay: 0.15s;
+}
+.card:hover .text-box h2,
+.card:hover .text-box p {
+  /* 鼠标放入卡片时，文字颜色改为父级的白色 */
+  color: inherit;
+  /* 慢慢显示 */
+  opacity: 1;
+  /* 位置还原 */
+  transform: translateY(0);
+}
