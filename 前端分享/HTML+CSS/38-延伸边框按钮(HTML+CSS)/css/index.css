@@ -1,0 +1,124 @@
+* {
+  /* 常规初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* 常规居中显示 */
+  display: grid;
+  place-content: center;
+
+  min-height: 100vh;
+}
+
+.btn {
+  /* 重复内容的变量 */
+  --border-color: #363837;
+  --border-width: 1vmin;
+
+  /* 去掉按钮本来的边框，颜色 */
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  /* 定位点，加整体动画 */
+  position: relative;
+  transition: all 0.2s;
+}
+.btn:active {
+  /* 点击按钮时缩小一圈 */
+  transform: scale(0.9);
+}
+
+.btn span {
+  /* 内部显示文字区域 */
+  display: inline-block;
+  /* 撑开整体大小，默认字体颜色、大小、加粗、间距，背景色 */
+  padding: 4vmin 8vmin;
+  color: #1c1f1e;
+  font-size: 6vmin;
+  font-weight: bold;
+  letter-spacing: 1vmin;
+  background-color: #f5f5f5;
+
+  /* 定位点，加整体动画 */
+  position: relative;
+  transition: all 0.4s;
+}
+.btn:hover span {
+  /* 鼠标放上去，简单修改颜色和背景 */
+  color: var(--border-color);
+  background-color: #e7e7e7;
+}
+
+.btn::before,
+.btn::after {
+  content: "";
+
+  /* 底部边框，默认宽高，背景色 */
+  width: 15%;
+  height: var(--border-width);
+  background-color: var(--border-color);
+
+  /* 定位在底部，显示层级稍微高一点，配合过渡动画 */
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  transition: width 0.2s 0.35s ease-out;
+}
+/* 一个在底部左边，一个在底部右边 */
+.btn::before {
+  right: 50%;
+}
+.btn::after {
+  left: 50%;
+}
+.btn:hover:before,
+.btn:hover:after {
+  /* 鼠标放上去直接让宽度撑满，两边各占 50% 就满了 */
+  width: 50%;
+  /* 配合回程动画时间，下面其他过渡动画一样 */
+  transition: width 0.2s ease-in;
+}
+
+/* 左右两边加上面的边框 */
+.btn span::before,
+.btn span::after {
+  content: "";
+
+  /* 默认情况下宽高，背景，透明度都设置隐藏，看不见 */
+  width: 0;
+  height: 0;
+  background: transparent;
+  opacity: 0;
+
+  /* 定位在底部，左右单独定位，显示层级也稍高一点 */
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  /* 过渡动画时间，需要前后配合 */
+  transition: width 0.2s ease-in, height 0.15s 0.2s linear, opacity 0s 0.35s;
+}
+.btn span::before {
+  left: 0;
+  /* 左半边的边框 */
+  border-left: var(--border-width) solid var(--border-color);
+  border-top: var(--border-width) solid var(--border-color);
+}
+.btn span::after {
+  right: 0;
+  /* 右半边的边框 */
+  border-right: var(--border-width) solid var(--border-color);
+  border-top: var(--border-width) solid var(--border-color);
+}
+.btn:hover span::before,
+.btn:hover span::after {
+  /* 鼠标放上去改变宽高，左右宽各占一半，高度需要减去边框，不然会超出 */
+  width: 50%;
+  height: calc(100% - var(--border-width));
+
+  /* 宽高的变大，配合透明度0-1，配合整体的过渡时间控制 */
+  opacity: 1;
+  transition: height 0.2s 0.2s ease-in, width 0.2s 0.4s linear, opacity 0s 0.2s;
+}
