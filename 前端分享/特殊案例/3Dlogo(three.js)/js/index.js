@@ -87,7 +87,9 @@ const lightMaterial = new THREE.MeshPhysicalMaterial({
  * 初始化 模型加载器 loader
  */
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath("/draco/"); // 官方文件
+dracoLoader.setDecoderPath(
+  "https://unpkg.com/three@0.151.3/examples/jsm/libs/draco/"
+); // 官方文件
 const gltfLoader = new GLTFLoader();
 gltfLoader.setDRACOLoader(dracoLoader);
 
