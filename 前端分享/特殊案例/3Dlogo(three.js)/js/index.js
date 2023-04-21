@@ -91,8 +91,13 @@ dracoLoader.setDecoderPath("/draco/"); // 官方文件
 const gltfLoader = new GLTFLoader();
 gltfLoader.setDRACOLoader(dracoLoader);
 
+// 模型文件位置
+const glbUrl =
+  "https://ckjdygc.cc/前端分享/特殊案例/3Dlogo(three.js)/model/3Dlogo.glb";
+// const glbUrl = "../model/3Dlogo.glb";
+
 // 加载准备好的 模型文件
-gltfLoader.load("../model/3Dlogo.glb", (gltf) => {
+gltfLoader.load(glbUrl, (gltf) => {
   const model = gltf.scene;
   console.log(model);
 
