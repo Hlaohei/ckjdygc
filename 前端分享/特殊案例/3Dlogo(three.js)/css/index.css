@@ -1,0 +1,15 @@
+* {
+  /* 初始化显示 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+canvas {
+  /* 让窗口保持一个屏幕内 */
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  overflow: hidden;
+}
